@@ -5,6 +5,7 @@ Steps to setup Django application on cPanel:
 
 Step one:-
 => Make a django project and upload it on cPanel in file manager.
+=> In seetings.py file in allowedHost add the url of hosting. 
 => In the virtual environment generate a requirements.txt file using the command "pip freez > requirements.txt".
 ##Note that requirements.txt file should be there in the root directory not in any sub-directory.
 
