@@ -7,7 +7,7 @@ Step one:-
 => Make a django project and upload it on cPanel in file manager.
 => In seetings.py file in allowedHost add the url of hosting. 
 => In the virtual environment generate a requirements.txt file using the command "pip freez > requirements.txt".
-##Note that requirements.txt file should be there in the root directory not in any sub-directory.
+**Note that requirements.txt file should be there in the root directory not in any sub-directory.**
 
 Step two:-
 => In cpanel go to setup a python app.
@@ -22,7 +22,7 @@ Step two:-
 
 Step three:-
 => Now many files will be generated in the root directory.
-## passenger_wsgi.py file may contain some error and wrong syntax you'll have to modify it.
+**passenger_wsgi.py file may contain some error and wrong syntax you'll have to modify it.**
 => Now go to the app and change the Application startup file to passenger_wsgi.py and run pip install with requirements.txt again.
 => Go to your hosting url, it should work now.
 
