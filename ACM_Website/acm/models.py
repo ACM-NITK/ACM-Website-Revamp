@@ -5,6 +5,8 @@ from django.db import models
 
 class SIG(models.Model):
  name = models.CharField(max_length=200)
+ smp_head_name = models.CharField(max_length=50)
+ smp_head_contact_number = models.CharField(max_length=12)
  def __str__(self):
         return self.name
 

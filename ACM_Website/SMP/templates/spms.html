@@ -1,0 +1,61 @@
+
+<!DOCTYPE HTML>
+{% extends 'base.html' %}
+{% load static %}   
+{% block content %}
+ <section class="banner_area d-flex text-center">
+        <div class="container align-self-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_content">
+                        <h1>{{ sig.name }}</h1>
+                        <h3><p>Summer Mentorship Programme</p></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+  </section>
+    <!--================banner Area =================-->
+    
+    
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+</style>
+
+<section class="about_area" style="margin-top:100px">
+        <div class="container" >
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">Courses</h2>
+            </div>
+        <section class="features_area">
+        <div class="row m0">
+           {% for x in smps %}
+            <div class="col-md-4 features_item" style="text-align:center">
+                <h3 style="text-align:center">{{ x.name }}</h3>
+                <a href="/smp/{{ sig.pk }}/{{ x.pk }}" class="btn_hover view_btn">Read more</a>
+            </div>
+         {% endfor %}
+        </div>
+    </section>
+</div>
+</section>
+        <section class="event_blog_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2>Contact : {{ sig.smp_head_name }} - {{ sig.smp_head_contact_number }} </h2>
+            </div>
+        </div>
+    </section>
+ {% endblock %}
+
