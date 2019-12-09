@@ -11,5 +11,5 @@ def sig_page(request, sig_id):
   events=Events.objects.filter(sig_id=sig_id)
   projects=Projects.objects.filter(sig_id=sig_id)
   contex = { 'sig': sig,'events': events, 'projects': projects, 'sigo': sigo }
-  return render(request,'yantras.html',contex)
+  return render(request,'acm/yantras.html',contex)
   

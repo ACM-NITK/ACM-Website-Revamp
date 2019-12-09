@@ -1,0 +1,128 @@
+{% extends 'acm/base.html' %}
+{% load static %}   
+
+{% block head_content %}
+    <link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}">
+{% endblock %}
+{% block content %}
+    <!--================Header Area =================-->
+    
+    
+     <!--================banner Area =================-->
+    <section class="banner_area d-flex text-center">
+        <div class="container align-self-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_content">
+                        <h1>{{ sig.name }}</h1>
+                        <h3><p>Welcome to the home of code</p></h3>
+                         <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================banner Area =================-->
+
+
+    <section class="about_area" style="margin-top:100px">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">What is Sanganitra?</h2>
+                <p style="font-size: 20px">
+                    Sanganitra is the computer science oriented special interest group of ACM NITK Chapter.
+                </p>
+            </div>
+
+        </div>
+    </section>
+    
+    <section class="about_area">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">What do we do at Sanganitra?</h2>
+                <p style="font-size: 20px">
+                   We are a bunch of people from different walks of life united by a single goal, to code, and to code well. Split into three sub interest groups namely, Security, Machine Learning and Systems, we carry out lively discussions year around on the various developments and complications in the aforementioned fields. We believe that code can do miracles and our projects are a testament to this fact. We also host code oriented events throughout the year and try to establish a platform to bring the best out of the coder in everyone. 
+                </p>
+            </div>
+
+        </div>
+    </section>
+    
+        
+    <section class="about_area">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">Our motivation</h2>
+                <p style="font-size: 20px">
+                    We, at Sanganitra, believe that code can create wonders and are driven by the single goal of breathing life into our belief.
+            </div>
+
+        </div>
+    </section>
+    
+    
+    <!--================Events Area =================-->
+
+    <section class="events_work_area " id="events">
+        <div class="section_title text-center" >
+            <h2>Events</h2>
+        </div>
+    
+        <div class="bs-example">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    {% for i in events %}
+                     {% if forloop.first %}
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                    {% else %}
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}"></li>
+                    {% endif %}
+                  {% endfor %}
+                </ol>
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner container">
+                   {% for z in events %}
+                   {% if forloop.first %}
+                      <div class="carousel-item active events_image features_item">
+                    {% else %}
+                      <div class="carousel-item events_image features_item">
+                    {% endif %}
+                        <h3 style="text-align: center">{{ z.name }}</h3>
+                        <p>{{ z.description }}</p>
+                    </div>
+                   {% endfor %}
+                </div>
+                <!-- Carousel controls -->
+                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!--================Events Area=================-->
+    
+    
+     <section class="about_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">Projects</h2>
+                <h3 style="margin-bottom:30px">Here is the list of projects that we completed in the year 2018-2019</h3>
+                {% for p in projects %}
+                    <div class="jumbotron">
+                        <h4>{{ p.name }}</h4>
+                        <p>{{ p.description }}</p>    
+                        <br>
+                        <li><a href={{ p.report_link }} <span class="label">Report Link </span></a></li>
+                        <li><a href={{ p.poster_link }}  <span class="label">Poster Link </span></a></li></td>
+                    </div>
+                {% endfor %}                            
+            </div>
+        </div>
+    </section>
+{% endblock %}
