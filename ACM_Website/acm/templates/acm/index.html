@@ -48,11 +48,9 @@
         <div class= "row row_content">
         {% for each_sig in descriptions.1 %}
             <div class="col-sm-12 col-md-4 features_item">
-                {% with each_sig.sig_id as current_sig_id %}
                 <h3>{{ each_sig.sig_name }}</h3>
                 <p>{{ each_sig.description }}</p>
-                <a href="{% url 'sig_page' current_sig_id %}" class="btn_hover view_btn">Read more</a>
-                {% endwith %}
+                <a href="/acm/{{ forloop.counter }}" class="btn_hover view_btn">Read more</a>
             </div>
 
         {% endfor %}
