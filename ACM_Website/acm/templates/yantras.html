@@ -146,9 +146,9 @@ td, th {
                 <ol class="carousel-indicators">
                     {% for i in events %}
                      {% if forloop.first %}
-                      <li data-target="{% static '#myCarousel' %}" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
                     {% else %}
-                      <li data-target="{% static '#myCarousel' %}" data-slide-to="{{ forloop.counter0 }}"></li>
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}"></li>
                     {% endif %}
                   {% endfor %}
                 </ol>
@@ -166,10 +166,10 @@ td, th {
                    {% endfor %}
                 </div>
                 <!-- Carousel controls -->
-                <a class="carousel-control-prev" href="{% static '#myCarousel' %}" data-slide="prev">
+                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </a>
-                <a class="carousel-control-next" href="{% static '#myCarousel' %}" data-slide="next">
+                <a class="carousel-control-next" href="#myCarousel" data-slide="next">
                     <span class="carousel-control-next-icon"></span>
                 </a>
             </div>
@@ -211,8 +211,8 @@ td, th {
         </div>
     </section>
 
-
-    <script src="{% static 'sjs/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'vendor/nice-select/js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
     <script src="{% static 'js/popper.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>

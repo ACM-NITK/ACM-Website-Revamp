@@ -120,7 +120,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/home/naman/1/ACM-Website-Revamp/ACM_Website/acm/static/'
-]
+
