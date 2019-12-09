@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+{% extends 'acm/base.html' %}
+{% block head_content %}
+{% load staticfiles %}
+{% endblock %}
+
+{% block content %}
+<body>
+ <!--================banner Area =================-->
+    <section class="banner_area d-flex text-center">
+        <div class="container align-self-center">
+            <div class="row">
+                  <div class="container text-center">
+                    <img src="{% static 'acm/images/esp1/acmlogo1.png' %}" align="middle;" class="rounded" style="width:200px;height:200px;">
+                  </div>
+                  <div class="container text-center" style="margin-top: 4%">
+                    <h3 class="display-4" style="color:white "">Fake Content, Manipulated Accounts, Chatbots, and KillFies on Social Media </h3>
+                    <p class="lead">A talk by Dr. Ponnurangam Kumaraguru</p>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================banner Area =================-->
+    
+    
+		<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+</style>
+
+
+    
+        
+    
+    
+    
+    <!--================Events Area =================-->
+<style>
+    .events_work_area{
+        background-color:#fff;
+    }
+    </style>
+    <br/><br/>
+    <div class="text-center" style="margin-bottom: 2%">
+      <img src="{% static 'acm/images/esp1/pk.jpg' %}" class="rounded" style="height:30vh;margin-bottom:2%">
+      <div class="container">
+        <h5 class='display-5'>Ponnurangam Kumaraguru</h1>
+      </div>
+    </div>
+    
+            <div class="container">
+                <div class="section_title text-center">
+    <div class="jumbotron">
+        <h4>About the speaker</h4>
+        <p class="card-text" style="margin-bottom:1%">Prof. Ponnurangam Kumaraguru ("PK") is an Associate Professor
+            of Computer Science and
+            Associate Dean of Students Affairs at IIIT-Delhi. He is an Adjunct faculty at IIIT Hyderabad. PK is a TEDx
+            and an ACM Distinguished & ACM India Eminent Speaker. PK received his Ph.D. from the School of Computer
+            Science at Carnegie Mellon University (CMU). His Ph.D. thesis work on anti-phishing research at CMU
+            contributed in creating an award-winning startup - Wombat Security Technologies, wombatsecurity.com.
+            Wombat
+            was acquired in March 2018 for USD 225 Million. In addition to his contributions to academia, PK is on
+            advisory role on various government organizations and a Fortune 500 company. He is also part of various
+            Board of Studies of different academic institutes across the country. He has co-authored research papers
+            in
+            the field of Privacy and Security in Online Social Media, Cyber Security, Computational Social Science,
+            Social Computing, Data Science for Social Good, amongst others. He is passionate about solving societal
+            problems using technologies, especially contributing to the domain of social computing. PK and his
+            students
+            have played an integral role in developing a technology used many State and Central Government agencies in
+            India. He has spent time making notable contributions at organizations like IBM India Research Labs, Adobe
+            Research Labs – India, Universidade Federal de Minas Gerais (UFMG) – Brazil, and Max Planck Institute for
+            Software Systems – Germany. PK has served as a Program Committee member at prestigious conferences like
+            WWW,
+            CHI, PETs, ICWSM, CSCW, AsiaCCS. He was the Founding Head of Cybersecurity Education and Research Centre
+            (CERC) at IIIT-Delhi. PK started and successfully manages PreCog (precog.iiitd.edu.in), a research group
+            at
+            IIIT-Delhi.</p>
+        <br>
+    </div>
+    </div>
+    </div>
+    <section class="events_work_area " id="events">
+<div class="section_title text-center" >
+    </div>
+    
+        <div class="bs-example">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                </ol>
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner container">
+                    
+                    <div class="carousel-item active events_image features_item">
+                        <h3 style="text-align: center">Abstract</h3>
+                        <p class="card-text">With an increase in usage of the Internet, there has been an exponential increase in the use of online social media on the Internet. Websites like Facebook, Instagram, Twitter, Tinder, YouTube, and many others have changed the way the Internet is being used. There is a dire need to investigate, measure, and understand privacy and security on online social media from various perspectives (computational, cultural, psychological). Real-world scalable systems need to be built to detect and defend security and privacy issues on online social media. Projects currently being implemented in IIITD, in the areas of (Mis)Information / Fake content on Twitter, Facebook, and WhatsApp; Linking profiles across different social networks; Selfie deaths and KillFies; and Manipulated followers will be discussed. Information regarding public usage of tools and datasets used for research at IIITD will be shared in due process. The usage of the link between Computational Social Science, Data Science, Statistics, and Network Science to conduct research will also be elucidated. An interactive session discussing general queries regarding the topic and upcoming research opportunities will follow the technical talk.</p>    
+                    </div>
+
+                </div>
+                <!-- Carousel controls -->
+                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+        <style>
+        .carousel{
+            margin-top: 20px;
+        }
+        .carousel-item{
+            text-align: center;
+            height: 40%; 
+             /*Prevent carousel from being distorted if for some reason image doesn't load */
+        }
+        .bs-example{
+        	margin: 20px;
+        }
+        </style>
+    </section>
+<br/><br/>
+    <!--================Events Area=================-->
+    
+    
+        <div class="container">
+            <div class="section_title text-center">
+                
+                
+                <div class="jumbotron">
+                    <h5 class="card-title">Details</h5>
+                    <p class="card-text">Place: CSE Seminar Hall </p>
+                    <p class="card-text">Date: 26th Sept </p>
+                    <p class="card-text">Time: 1:30 PM - 3:00 PM</p>
+                </div>
+                
+                
+                
+            </div>
+
+        </div>
+{% endblock %}

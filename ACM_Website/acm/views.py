@@ -17,6 +17,10 @@ def contact_us(request):
   sigo=SIG.objects.all()
   contex = {'sigo': sigo}
   return render(request,'acm/contact_us.html',contex)
+def esp(request):
+ sigo=SIG.objects.all()
+ contex = {'sigo': sigo}
+ return render(request,'acm/esp.html',contex) 
 
   
   

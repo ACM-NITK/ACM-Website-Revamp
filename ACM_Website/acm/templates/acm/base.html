@@ -6,7 +6,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link rel="icon" href={% static "acm/images/ACM_logo.svg.png" %} type="images/png">
+		<link rel="icon" href="{% static 'acm/images/ACM_logo.svg.png' %}" type="images/png">
 		<title>ACM NITK</title>
 		<link rel="stylesheet" href="{% static 'acm/css/bootstrap.css' %}">
 		<link rel="stylesheet" href="{% static 'acm/vendor/linericon/style.css' %}">
@@ -55,10 +55,14 @@
 							</li>
 							<li class="nav-item"><a class="nav-link" href="trails.html">Trails</a></li>
 							{% if request.get_full_path == '/acm/contact_us/' %}
+							{% elif request.get_full_path == '/acm/esp/' %}
 							{% else %}
 							<li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
 							{% endif %}
-							<li class="nav-item"><a class="nav-link" href="/acm/blog/">Blog</a></li>
+							{% if request.get_full_path == '/acm/' %}
+							<li class="nav-item"><a class="nav-link" href="/acm/esp">ESP</a></li>
+							{% endif %}
+							<li class="nav-item"><a class="nav-link" href="/blog/">Blog</a></li>
 							<li class="nav-item"><a class="nav-link" href="/acm/contact_us/">Contact</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
