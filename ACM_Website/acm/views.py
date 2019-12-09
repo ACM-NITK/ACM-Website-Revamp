@@ -13,7 +13,10 @@ def sig_page(request, sig_id):
   projects=Projects.objects.filter(sig_id=sig_id)
   contex = { 'sig': sig,'events': events, 'projects': projects, 'sigo': sigo }
   return render(request,'acm/yantras.html',contex)
-
+def contact_us(request):
+  sigo=SIG.objects.all()
+  contex = {'sigo': sigo}
+  return render(request,'acm/contact_us.html',contex)
 
   
   
