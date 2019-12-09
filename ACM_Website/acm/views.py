@@ -6,10 +6,14 @@ def home_page(request):
 	return HttpResponse('home page')
 
 def sig_page(request, sig_id):
-  sig=SIG.objects.filter(pk=sig_id)
+  si=SIG.objects.filter(pk=sig_id)
+  sig=si[0]
   sigo=SIG.objects.all()
   events=Events.objects.filter(sig_id=sig_id)
   projects=Projects.objects.filter(sig_id=sig_id)
   contex = { 'sig': sig,'events': events, 'projects': projects, 'sigo': sigo }
   return render(request,'acm/yantras.html',contex)
+
+
+  
   
