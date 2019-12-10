@@ -11,4 +11,8 @@ def home(request,sig_id):
  contex={ 'sig':sig, 'sigo':sigo, 'smps':smps }
  return render(request,'spms.html',contex)
 def des(request,sig_id,smp_id):
- return HttpResponse(sig_id + smp_id)
+ smp=(SMP.objects.filter(pk=smp_id))[0]
+ smp_des=SMP_des.objects.filter(smp_id=smp_id)
+ contex={ 'smp':smp, 'smp_des':smp_des }
+ return render(request,'smp_des.html',contex)
+

@@ -10,9 +10,9 @@ def home_page(request):
     # opens the json file and saves the raw contents
     data = open('acm/static/acm/json/index.json').read()
     descriptions = json.loads(data)
-
+    sigo = SIG.objects.all()
     context = {'events': events, 'special_people': special_people,
-               'descriptions': descriptions}
+               'descriptions': descriptions, 'sigo': sigo }
     return render(request, 'acm/index.html', context)
 
 
