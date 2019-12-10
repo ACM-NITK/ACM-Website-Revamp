@@ -15,7 +15,7 @@
                 <div class="col-md-12">
                     <div class="banner_content">
                         <h1>{{ sig.name }}</h1>
-                        <h3><p>Welcome to the home of code</p></h3>
+                        <h3><p>{{data.sub_head}}</p></h3>
                          <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a> 
                     </div>
                 </div>
@@ -28,9 +28,9 @@
     <section class="about_area" style="margin-top:100px">
         <div class="container">
             <div class="section_title text-center">
-                <h2 style="margin-bottom:30px">What is Sanganitra?</h2>
+                <h2 style="margin-bottom:30px">What is {{data.name}}?</h2>
                 <p style="font-size: 20px">
-                    Sanganitra is the computer science oriented special interest group of ACM NITK Chapter.
+                    {{data.description}}
                 </p>
             </div>
 
@@ -40,9 +40,9 @@
     <section class="about_area">
         <div class="container">
             <div class="section_title text-center">
-                <h2 style="margin-bottom:30px">What do we do at Sanganitra?</h2>
+                <h2 style="margin-bottom:30px">What do we do at {{data.name}}?</h2>
                 <p style="font-size: 20px">
-                   We are a bunch of people from different walks of life united by a single goal, to code, and to code well. Split into three sub interest groups namely, Security, Machine Learning and Systems, we carry out lively discussions year around on the various developments and complications in the aforementioned fields. We believe that code can do miracles and our projects are a testament to this fact. We also host code oriented events throughout the year and try to establish a platform to bring the best out of the coder in everyone. 
+                   {{data.long_desc}}
                 </p>
             </div>
 
@@ -55,7 +55,7 @@
             <div class="section_title text-center">
                 <h2 style="margin-bottom:30px">Our motivation</h2>
                 <p style="font-size: 20px">
-                    We, at Sanganitra, believe that code can create wonders and are driven by the single goal of breathing life into our belief.
+                    {{data.motivation}}
             </div>
 
         </div>
