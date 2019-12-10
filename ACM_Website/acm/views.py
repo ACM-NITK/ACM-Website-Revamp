@@ -22,8 +22,14 @@ def sig_page(request, sig_id):
     sigo = SIG.objects.all()
     events = Events.objects.filter(sig_id=sig_id)
     projects = Projects.objects.filter(sig_id=sig_id)
-    context = {'sig': sig, 'events': events,
-               'projects': projects, 'sigo': sigo}
+    with open('acm/static/acm/json/yantras.json') as f:
+        data2 = json.loads(f.read())
+        data =''
+        for i in range (3):
+            if(data2[i]['id']==sig_id):
+                data=data2[i]  
+        context = {'sig': sig, 'events': events,
+               'projects': projects, 'sigo': sigo , 'data':data}
     return render(request, 'acm/yantras.html', context)
 
 
