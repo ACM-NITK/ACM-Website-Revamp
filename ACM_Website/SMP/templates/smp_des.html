@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+{% load increase %}
+<html>
+<head>
+	<title>SMP 2019 | ACM NITK</title>
+</head>
+<body bgcolor="#313454">
+	<center><h1>{{ smp.name }}</h1>
+	<hr width="70%">
+	<br></center>
+	<p class="mentor">Mentor(s) : {{ smp.mentors }}</p>
+	<h1>Overview</h1>
+	<p>{{ smp.overview }}</p>
+	<h1>Platform for Tutoring</h1>
+	<p>{{ smp.platform_of_tutoring }}</p>
+	{% for x in smp_des %}
+	{% if forloop.first %}
+	<h1>{{ smp_des.0.sub_heading }}</h1>
+	<ul>
+		<li>{{ smp_des.0.sub_des }}</li>
+	{% elif smp_des|compare:forloop.counter0 %}
+	    <li>{{ x.sub_des }}</li>
+	{% elif x.sub_heading == "Week 1" %}
+	</ul>
+	<h1>Course Plan</h1>
+	<h1>{{ x.sub_heading }}</h1>
+	<ul>
+		<li>{{ x.sub_des }}</li>
+	{% else %}
+	</ul>
+	<h1>{{ x.sub_heading }}</h1>
+	<ul>
+		<li>{{ x.sub_des }}</li>
+	{% endif %}
+    {% endfor %}
+</ul>
+</body>
+<style type="text/css">
+	h1 {
+	font-size: 30px;
+	color: white;
+	margin-left: 4%;
+}
+h2 {
+	margin-left: 5%;
+	color: white;
+}
+ul {
+	margin-left: 2%;
+	color: white;
+}
+li {
+	margin: 2%;
+}
+p {
+    margin-left: 4%;
+	color: white;
+}
+p.mentor{
+     margin-left: 4%;
+	color: white;
+	font-weight:bold;
+}
+</style>
+</html>
