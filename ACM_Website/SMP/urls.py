@@ -3,5 +3,6 @@ from .views import *
 
 urlpatterns = [
     path('<int:sig_id>/', home),
-    path('<int:sig_id>/<int:smp_id>/',des),
+    path('<int:sig_id>/<int:smp_id>/', des),
+    path('new-smp/', new_smp),
 ]
