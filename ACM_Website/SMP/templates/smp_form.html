@@ -38,36 +38,29 @@
 					<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
 				</div>
 			{% elif 'freq' in f.name %}
-				<div class="form-group" style="display:none;"> 
-					<label for="{{f.name}}">{{f.name}}</label>
-					<input type="text" class="form-control" name="{{f.name}}" value="1" maxlength="{{f.max_length}}" id="{{f.name}}">
-				</div>
+				{{f}}
 			{% endif %}
 		{% endfor %}
-
-		<fieldset id="Exercise-fieldset">
-			<h3>Exercises</h3>
-			{% for f in smp_form %}
-				{% if 'Exercise' in f.name %}
-					{% if f.is_hidden %}
-						<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
-							<label for="{{f.name}}">{{f.label}}</label>
-							<input rows="4" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-						</div>
-					{% else %}
-						<div class="form-group" id="{{f.name}}_div" > 
-							<label for="{{f.name}}">{{f.label}}</label>
-							<input rows="4" type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-						</div>
-					{% endif %}
+       		<h3>Exercises</h3>
+		{% for f in smp_form %}
+			{% if 'Exercise' in f.name %}
+				{% if f.is_hidden %}
+					<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
+						<label for="{{f.name}}">{{f.label}}</label>
+						<input rows="4" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
+					</div>
+				{% else %}
+					<div class="form-group" id="{{f.name}}_div" > 
+						<label for="{{f.name}}">{{f.label}}</label>
+						<input rows="4" type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
+					</div>
 				{% endif %}
-			{% endfor %}
-		</fieldset>
+			{% endif %}
+		{% endfor %}
 		<button type="button" onclick="add_element('Exercise_')" class="btn btn-primary">Add</button>
 		<button type="button" onclick="remove_element('Exercise_')" class="btn btn-primary">Remove</button>
 		
 		<br>
-		<fieldset id="Prerequisite-fieldset">
 			<h3>Prerequisite</h3>
 			{% for f in smp_form %}
 				{% if 'Prerequisite' in f.name %}
@@ -84,12 +77,11 @@
 					{% endif %}
 				{% endif %}
 			{% endfor %}
-		</fieldset>
 		<button type="button" onclick="add_element('Prerequisite_')" class="btn btn-primary">Add</button>
 		<button type="button" onclick="remove_element('Prerequisite_')" class="btn btn-primary">Remove</button>
 
 		<br>
-		<fieldset id="Course-content-fieldset">
+
 			<h3>Course content</h3>
 			{% for f in smp_form %}
 				{% if 'Course-content' in f.name %}
@@ -106,12 +98,10 @@
 					{% endif %}
 				{% endif %}
 			{% endfor %}
-		</fieldset>
 		<button type="button" onclick="add_element('Course-content_')" class="btn btn-primary">Add</button>
 		<button type="button" onclick="remove_element('Course-content_')" class="btn btn-primary">Remove</button>
 
 		<br>
-		<fieldset id="Week-fieldset">
 			<h3>Weekly Plan</h3>
 			{% for i in range_of_8 %}
 				{% if i is 1 %}
@@ -160,7 +150,6 @@
 					</div>
 				{% endif %}
 			{% endfor %}
-		</fieldset>
 		<button type="button" onclick="add_element('Week_')" class="btn btn-primary">Add week</button>
 		<button type="button" onclick="remove_element('Week_')" class="btn btn-primary">Remove week</button>
 		<button type="submit">Submit</button>

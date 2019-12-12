@@ -88,9 +88,11 @@ def new_smp(request):
         password_form = PasswordForm()
         smp_form = SMPForm()
     static_fields = ['Name', 'Mentors', 'Overview', 'Platform']
+    sigo=SIG.objects.all()
     context = {'password_form': password_form,
                'smp_form': smp_form,
                'validated': validated,
                'static_fields': static_fields,
-               'range_of_8': [1, 2, 3, 4, 5, 6, 7, 8]}
+               'range_of_8': [1, 2, 3, 4, 5, 6, 7, 8],
+               'sigo': sigo, }
     return render(request, 'smp_form.html', context)

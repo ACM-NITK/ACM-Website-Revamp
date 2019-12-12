@@ -1,0 +1,33 @@
+{% extends 'acm/base.html' %}
+
+{% block content %}
+	<br><br><br><br><br>
+	{% if valid %}
+	<form method="POST" action="">
+		{% csrf_token %}
+		{{project_form.SIG}}
+		{% for x in project_form %}
+		  {% if forloop.first %}
+		  {% else %}
+			<div class="form-group" > 
+					<label for="{{x.name}}">{{x.name}}</label>
+					<div class="form-control" >
+						{{x}}
+					</div>
+			</div>
+		 {% endif %}
+		{% endfor %}
+		<button type="submit">Submit</button>
+	</form>
+	{% else %}
+	<form method="POST" action="">
+			{% csrf_token %}
+			{{password_form}}
+			<button type="submit">Submit</button>
+		</form>
+	{% endif %}
+{% endblock %}
+
+   
+
+	

@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from .models import *
 import json
-
+from django.http import HttpResponse
+from .forms import *
+from django.contrib import messages
+from django.shortcuts import redirect
 
 def home_page(request):
     events = Events.objects.all()
@@ -43,3 +46,61 @@ def esp(request):
     sigo = SIG.objects.all()
     context = {'sigo': sigo}
     return render(request, 'acm/esp.html', context)
+
+
+def new_project(request):
+    valid=0
+    if request.method == "POST":
+        project_form=Projectform(request.POST)
+        password_form=PasswordForm(request.POST)
+        if project_form.is_valid():
+            sig=project_form.cleaned_data["SIG"]
+            name=project_form.cleaned_data["Name"]
+            des=project_form.cleaned_data["Description"]
+            rep_link=project_form.cleaned_data["Report_link"]
+            pos_link=project_form.cleaned_data["Poster_link"]
+            project_obj=Projects.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des,report_link=rep_link,poster_link=pos_link)
+            project_obj.save()
+            messages.success(request, "Project successfully added")
+            return redirect('/acm/')
+        if password_form.is_valid():
+            if password_form.cleaned_data["key"] == "PASSWORD":
+                valid = 1
+            else:
+                messages.MessageFailure(request, 'Incorrect password')   
+    else :
+        password_form=PasswordForm()
+        project_form=Projectform()
+    sigo = SIG.objects.all()
+    context={ 'sigo':sigo, 'project_form':project_form, 'password_form':password_form ,'valid':valid }
+    return render(request,'acm/projects_form.html',context)
+
+def new_event(request):
+    valid=0
+    if request.method=="POST":
+        event_form=EventsForm(request.POST)
+        password_form=PasswordForm(request.POST)
+        if event_form.is_valid():
+            sig=event_form.cleaned_data["SIG"]
+            name=event_form.cleaned_data["Name"]
+            des=event_form.cleaned_data["Description"]
+            event_obj=Events.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des)
+            event_obj.save()
+            messages.success(request, "Event successfully added")
+            return redirect('/acm/')
+        if password_form.is_valid():
+            if password_form.cleaned_data["key"] == "PASSWORD":
+                valid = 1
+            else:
+                messages.MessageFailure(request, 'Incorrect password')
+    else :
+        password_form=PasswordForm()
+        event_form=EventsForm()
+    sigo = SIG.objects.all()
+    context={ 'sigo':sigo, 'event_form':event_form, 'password_form':password_form ,'valid':valid }
+    return render(request,'acm/event_form.html',context)
+
+
+
+
+ 

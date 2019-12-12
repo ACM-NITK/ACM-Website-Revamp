@@ -56,6 +56,9 @@
 							<li class="nav-item"><a class="nav-link" href="https://nitk.acm.org/trails.html">Trails</a></li>
 							{% if request.get_full_path == '/acm/contact_us/' %}
 							{% elif request.get_full_path == '/acm/esp/' %}
+							{% elif request.get_full_path == '/acm/project/new' %}
+							{% elif request.get_full_path == '/acm/events/new' %}
+							{% elif "smp" in request.get_full_path %}
 							{% else %}
 							<li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
 							{% endif %}

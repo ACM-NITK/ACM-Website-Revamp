@@ -9,7 +9,6 @@ class PasswordForm(forms.Form):
 class SMPForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(SMPForm, self).__init__(*args, **kwargs)
-
         MY_CHOICES = ()
         for i in range(2):
             MY_CHOICES += ((i+1, str(SIG.objects.get(pk=i+1).name)),)
