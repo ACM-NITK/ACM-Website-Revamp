@@ -28,7 +28,8 @@ def sig_page(request, sig_id):
     with open('acm/static/acm/json/yantras.json') as f:
         data2 = json.loads(f.read())
         data =''
-        for i in range (3):
+        x=len(sigo)
+        for i in range (x):
             if(data2[i]['id']==sig_id):
                 data=data2[i]  
         context = {'sig': sig, 'events': events,
