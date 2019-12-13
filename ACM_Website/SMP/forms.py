@@ -10,7 +10,7 @@ class SMPForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super(SMPForm, self).__init__(*args, **kwargs)
         MY_CHOICES = ()
-        x=len(SIG.objects.all())
+        x = len(SIG.objects.all())
         for i in range(x):
             MY_CHOICES += ((i+1, str(SIG.objects.get(pk=i+1).name)),)
         print(MY_CHOICES)

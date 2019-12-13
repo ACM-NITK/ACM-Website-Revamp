@@ -23,6 +23,7 @@
 {% endblock %}
 {% block content %}
 	<br><br><br><br><br>
+	<!-- If password validation is done, show the SMP form-->
 	{% if validated %}
 	<form action="" method="POST" id="main_content">
 		{% csrf_token %}
@@ -38,122 +39,60 @@
 					<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
 				</div>
 			{% elif 'freq' in f.name %}
-				{{f}}
+				<input type="hidden" class="form-control" value="1" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
 			{% endif %}
 		{% endfor %}
-       		<h3>Exercises</h3>
-		{% for f in smp_form %}
-			{% if 'Exercise' in f.name %}
-				{% if f.is_hidden %}
-					<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
-						<label for="{{f.name}}">{{f.label}}</label>
-						<input rows="4" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-					</div>
-				{% else %}
-					<div class="form-group" id="{{f.name}}_div" > 
-						<label for="{{f.name}}">{{f.label}}</label>
-						<input rows="4" type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-					</div>
+
+		{% for field in dynammic_fields %}
+			<h3>{{field}}</h3>
+			{% for f in smp_form %}
+				{% if field in f.name %}
+					{% if f.is_hidden %}
+						<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
+					{% else %}
+						<div class="form-group" id="{{f.name}}_div" > 
+					{% endif %}
+							<label for="{{f.name}}">{{f.label}}</label>
+							<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
+						</div>
 				{% endif %}
-			{% endif %}
+			{% endfor %}
+			<button type="button" onclick="add_element('{{field}}_')" class="btn btn-primary">Add</button>
+			<button type="button" onclick="remove_element('{{field}}_')" class="btn btn-primary">Remove</button>
+			<br>
 		{% endfor %}
-		<button type="button" onclick="add_element('Exercise_')" class="btn btn-primary">Add</button>
-		<button type="button" onclick="remove_element('Exercise_')" class="btn btn-primary">Remove</button>
-		
 		<br>
-			<h3>Prerequisite</h3>
-			{% for f in smp_form %}
-				{% if 'Prerequisite' in f.name %}
-					{% if f.is_hidden %}
-						<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
-							<label for="{{f.name}}">{{f.label}}</label>
-							<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-						</div>
-					{% else %}
-						<div class="form-group" id="{{f.name}}_div" > 
-							<label for="{{f.name}}">{{f.label}}</label>
-							<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-						</div>
-					{% endif %}
-				{% endif %}
-			{% endfor %}
-		<button type="button" onclick="add_element('Prerequisite_')" class="btn btn-primary">Add</button>
-		<button type="button" onclick="remove_element('Prerequisite_')" class="btn btn-primary">Remove</button>
-
-		<br>
-
-			<h3>Course content</h3>
-			{% for f in smp_form %}
-				{% if 'Course-content' in f.name %}
-					{% if f.is_hidden %}
-						<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
-							<label for="{{f.name}}">{{f.label}}</label>
-							<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-						</div>
-					{% else %}
-						<div class="form-group" id="{{f.name}}_div" > 
-							<label for="{{f.name}}">{{f.label}}</label>
-							<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-						</div>
-					{% endif %}
-				{% endif %}
-			{% endfor %}
-		<button type="button" onclick="add_element('Course-content_')" class="btn btn-primary">Add</button>
-		<button type="button" onclick="remove_element('Course-content_')" class="btn btn-primary">Remove</button>
-
-		<br>
-			<h3>Weekly Plan</h3>
-			{% for i in range_of_8 %}
-				{% if i is 1 %}
-					<div id="Week_{{i}}_div">
-						Week {{i}}
-						{% for f in smp_form %}
-							{% concatenate "Week_" i "_Description" as q %}
-							{% if q in f.name %}
-								{% if f.is_hidden %}
-									<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
-										<label for="{{f.name}}">{{f.label}}</label>
-										<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-									</div>
-								{% else %}
-									<div class="form-group" id="{{f.name}}_div" > 
-										<label for="{{f.name}}">{{f.label}}</label>
-										<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-									</div>
-								{% endif %}
+		<h3>Weekly Plan</h3>
+		{% for i in range_of_8 %}
+			{% if i is 1 %}
+				<div id="Week_{{i}}_div">
+			{% else %}
+				<div id="Week_{{i}}_div" style="display:none;">
+			{% endif %}
+					Week {{i}}
+					{% for f in smp_form %}
+						{% concatenate "Week_" i "_Description" as q %}
+						{% if q in f.name %}
+							{% if f.is_hidden %}
+								<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
+							{% else %}
+								<div class="form-group" id="{{f.name}}_div" > 
 							{% endif %}
-						{% endfor %}
-						<button type="button" onclick="add_element('Week_'+{{i}}+'_Description_')" class="btn btn-primary">Add week description</button>
-						<button type="button" onclick="remove_element('Week_'+{{i}}+'_Description_')" class="btn btn-primary">Remove week description</button>
-					</div>
-				{% else %}
-					<div id="Week_{{i}}_div" style="display:none;">
-						Week {{i}}
-						{% for f in smp_form %}
-							{% concatenate "Week_" i "_Description" as q %}
-							{% if q in f.name %}
-								{% if f.is_hidden %}
-									<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
-										<label for="{{f.name}}">{{f.label}}</label>
-										<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-									</div>
-								{% else %}
-									<div class="form-group" id="{{f.name}}_div" > 
-										<label for="{{f.name}}">{{f.label}}</label>
-										<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
-									</div>
-								{% endif %}
-							{% endif %}
-						{% endfor %}
-						<button type="button" onclick="add_element('Week_'+{{i}}+'_Description_')" class="btn btn-primary">Add week description</button>
-						<button type="button" onclick="remove_element('Week_'+{{i}}+'_Description_')" class="btn btn-primary">Remove week description</button>
-					</div>
-				{% endif %}
-			{% endfor %}
+									<label for="{{f.name}}">{{f.label}}</label>
+									<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
+								</div>
+						{% endif %}
+					{% endfor %}
+					<button type="button" onclick="add_element('Week_'+{{i}}+'_Description_')" class="btn btn-primary">Add week description</button>
+					<button type="button" onclick="remove_element('Week_'+{{i}}+'_Description_')" class="btn btn-primary">Remove week description</button>
+				</div>
+		{% endfor %}
 		<button type="button" onclick="add_element('Week_')" class="btn btn-primary">Add week</button>
 		<button type="button" onclick="remove_element('Week_')" class="btn btn-primary">Remove week</button>
 		<button type="submit">Submit</button>
 	<form>
+
+	<!-- If password validation is not done, show the password form-->
 	{% else %}
 		<form method="POST" action="">
 			{% csrf_token %}
