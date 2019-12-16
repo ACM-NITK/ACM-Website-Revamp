@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% load is__sig %}
 <!DOCTYPE HTML>
 
 <html lang="en">
@@ -42,8 +43,16 @@
 					</button>
 					<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 						<ul class="nav navbar-nav menu_nav ml-auto">
-							<li class="nav-item active"><a class="nav-link" href="/acm/">Home</a></li>
-							<li class="nav-item submenu dropdown">
+							{% if request.get_full_path == '/acm/' %}
+								<li class="nav-item active"><a class="nav-link" href="/acm/">Home</a></li>
+							{% else %}
+								<li class="nav-item"><a class="nav-link" href="/acm/">Home</a></li>
+							{% endif %}
+							{% if request.get_full_path|is_sig %}
+								<li class="nav-item active submenu dropdown">
+							{% else %}
+								<li class="nav-item submenu dropdown">
+							{% endif %}
 								<a href="#yantras" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
 									aria-haspopup="true" aria-expanded="false">Yantras</a>
 								<ul class="dropdown-menu">
@@ -66,7 +75,11 @@
 							<li class="nav-item"><a class="nav-link" href="/acm/esp">ESP</a></li>
 							{% endif %}
 							<li class="nav-item"><a class="nav-link" href="https://nitk.acm.org/blog/">Blog</a></li>
-							<li class="nav-item"><a class="nav-link" href="/acm/contact_us/">Contact</a></li>
+							{% if request.get_full_path == '/acm/contact_us/' %}
+								<li class="nav-item active"><a class="nav-link" href="/acm/contact_us/">Contact</a></li>
+							{% else %}
+								<li class="nav-item"><a class="nav-link" href="/acm/contact_us/">Contact</a></li>
+							{% endif %}
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item"><a href="#" class="search"><i class="lnr lnr-magnifier"></i></a></li>

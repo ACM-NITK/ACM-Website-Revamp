@@ -1,0 +1,12 @@
+from django import template
+import re
+
+register = template.Library()
+
+
+@register.filter
+def is_sig(value):
+	var=re.compile(r'/acm/\d/')
+	return bool(var.match(value))
+
+    
