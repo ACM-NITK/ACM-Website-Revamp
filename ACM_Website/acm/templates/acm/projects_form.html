@@ -1,23 +1,44 @@
 {% extends 'acm/base.html' %}
+{% block head_content %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+{% endblock %}
 {% block content %}
 	<br><br><br><br><br>
 	{% if valid %}
 	<form method="POST" action="">
-		{% csrf_token %}
-		{{project_form.SIG}}
-		{% for x in project_form %}
-		  {% if forloop.first %}
-		  {% else %}
-			<div class="form-group" > 
-					<label for="{{x.name}}">{{x.name}}</label>
-					<div class="form-control" >
-						{{x}}
+			{% csrf_token %}
+				<div class="container center_div">
+					<div class="form-group row" align="center"> 
+						<label for="SIG">Choose SIG:</label>
+						<br>
+						{{project_form.SIG}}
 					</div>
+				</div>
+			{% for x in project_form %}
+			  {% if forloop.first %}
+			  {% else %}
+			  	<div class="container center_div">
+					<div class="form-group row" align="center"> 
+						<label for="{{x.name}}">{{x.name}}</label>	
+						<input type="text" class="form-control" name="{{x.name}}" maxlength="{{x.max_length}}" id="{{x.name}}">
+					</div>
+				</div>
+			 {% endif %}
+			{% endfor %}
+		<div class="container center_div">
+			<div class="form-group row" align="center"> 	
+				<button type="submit">Submit</button>
 			</div>
-		 {% endif %}
-		{% endfor %}
-		<button type="submit">Submit</button>
+		</div>
 	</form>
 	{% else %}
 	<form method="POST" action="">
@@ -30,4 +51,3 @@
 
    
 
-	
