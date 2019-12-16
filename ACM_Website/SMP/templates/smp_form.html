@@ -2,6 +2,17 @@
 {% load static %}   
 {% load extras %}
 {% block head_content %}
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	<script>
 		function add_element(form_field_id){
 			curr_form_field_freq=document.querySelector("#" + form_field_id.toLowerCase() + "freq").value;
@@ -11,7 +22,6 @@
 				document.querySelector("#" +form_field_id + curr_form_field_freq+"_div").style.display="block";
 			}
 		}
-
 		function remove_element(form_field_id){
 			curr_form_field_freq=document.querySelector("#"+form_field_id.toLowerCase() + "freq").value;
 			if(curr_form_field_freq>1){
@@ -29,22 +39,28 @@
 		{% csrf_token %}
 
 		<!--- # SIG with options -->
+		<div class="container center_div">
 		{{smp_form.SIG}}
-
+	</div>
+	<br><br>
 		<!---Static fields like SMP-Name, Mentors -->
 		{% for f in smp_form %}
 			{% if f.name in static_fields %}
-				<div class="form-group" > 
-					<label for="{{f.name}}">{{f.name}}</label>
+			<div class="container center_div">
+				<div class="form-group row" align="center"> 
+					<label for="{{f.name}}">{{f.name}}</label>	
 					<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
 				</div>
+	</div>
 			{% elif 'freq' in f.name %}
 				<input type="hidden" class="form-control" value="1" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
 			{% endif %}
 		{% endfor %}
 
 		{% for field in dynammic_fields %}
-			<h3>{{field}}</h3>
+		<div class="container center_div">	
+		<h3>{{field}}</h3>
+		</div>
 			{% for f in smp_form %}
 				{% if field in f.name %}
 					{% if f.is_hidden %}
@@ -52,24 +68,32 @@
 					{% else %}
 						<div class="form-group" id="{{f.name}}_div" > 
 					{% endif %}
+					<div class="container center_div">
 							<label for="{{f.name}}">{{f.label}}</label>
 							<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
 						</div>
+					</div>
 				{% endif %}
 			{% endfor %}
+			<div class="container center_div">
 			<button type="button" onclick="add_element('{{field}}_')" class="btn btn-primary">Add</button>
 			<button type="button" onclick="remove_element('{{field}}_')" class="btn btn-primary">Remove</button>
-			<br>
+			<br><br>
+			</div>
 		{% endfor %}
 		<br>
+		<div class="container center_div">
 		<h3>Weekly Plan</h3>
+		</div>
 		{% for i in range_of_8 %}
 			{% if i is 1 %}
 				<div id="Week_{{i}}_div">
 			{% else %}
 				<div id="Week_{{i}}_div" style="display:none;">
 			{% endif %}
+			<div class="container center_div">
 					Week {{i}}
+					</div>
 					{% for f in smp_form %}
 						{% concatenate "Week_" i "_Description" as q %}
 						{% if q in f.name %}
@@ -78,20 +102,28 @@
 							{% else %}
 								<div class="form-group" id="{{f.name}}_div" > 
 							{% endif %}
+							<div class="container center_div">
 									<label for="{{f.name}}">{{f.label}}</label>
 									<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
 								</div>
+								</div>
 						{% endif %}
 					{% endfor %}
+					<div class="container center_div">
 					<button type="button" onclick="add_element('Week_'+{{i}}+'_Description_')" class="btn btn-primary">Add week description</button>
 					<button type="button" onclick="remove_element('Week_'+{{i}}+'_Description_')" class="btn btn-primary">Remove week description</button>
-				</div>
+					<br>
+					<br>
+					</div>
+					</div>
 		{% endfor %}
+		<div class="container center_div">
 		<button type="button" onclick="add_element('Week_')" class="btn btn-primary">Add week</button>
 		<button type="button" onclick="remove_element('Week_')" class="btn btn-primary">Remove week</button>
+		<br><br>
 		<button type="submit">Submit</button>
+		</div>
 	<form>
-
 	<!-- If password validation is not done, show the password form-->
 	{% else %}
 		<form method="POST" action="">
@@ -101,3 +133,5 @@
 		</form>
 	{% endif %}
 {% endblock %}
+
+
