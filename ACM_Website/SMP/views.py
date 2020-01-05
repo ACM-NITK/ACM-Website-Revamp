@@ -43,27 +43,39 @@ def new_smp(request):
             mentors = smp_form.cleaned_data["Mentors"]
             overview = smp_form.cleaned_data["Overview"]
             platform = smp_form.cleaned_data["Platform"]
-            SMP_object = SMP.objects.create(
-                sig_id=SIG.objects.get(pk=sig), name=name, mentors=mentors, overview=overview, platform_of_tutoring=platform)
-            SMP_object.save()
+
+            mydict = {}
 
             for field in dynammic_fields:
+                mydict[field] = []
                 for i in range(smp_form.cleaned_data[field.lower() + "_freq"]):
-                    des = smp_form.cleaned_data[field+'_' + str(i+1)]
-                    if des:
-                        SMP_des_object = SMP_des.objects.create(
-                            smp_id=SMP_object, sub_heading=field, sub_des=des)
-                        SMP_des_object.save()
+                    description = smp_form.cleaned_data[field+'_' + str(i+1)]
+                    if description:
+                        Description_object = Description(
+                            description=description)
+                        Description_object.save()
+                        mydict[field] += [Description_object]
 
+            curr_arr2 = []
             for i in range(smp_form.cleaned_data["week_freq"]):
+                curr_arr = []
                 for j in range(smp_form.cleaned_data["week_"+str(i+1)+"_description_freq"]):
                     des = smp_form.cleaned_data["Week_" +
                                                 str(i+1)+"_Description_"+str(j+1)]
                     if des:
-                        SMP_des_object = SMP_des.objects.create(
-                            smp_id=SMP_object, sub_heading="Week "+str(i+1), sub_des=des)
-                        SMP_des_object.save()
+                        Description_object = Description(
+                            description=description)
+                        Description_object.save()
+                        curr_arr += [Description_object]
 
+                WeeklyPlan_object = WeeklyPlan(week_description=curr_arr)
+                WeeklyPlan_object.save()
+                curr_arr2 += [WeeklyPlan_object]
+
+            SMP_object = SMP.objects.create(
+                id=1, sig_id=sig, name=name, mentors=mentors, overview=overview, platform_of_tutoring=platform,
+                exercises=mydict['Exercise'], prerequisites=mydict['Prerequisite'], course_content=mydict['Course-content'], weekly_plan=curr_arr2)
+            SMP_object.save()
             messages.success(request, "SMP created")
             return redirect('acm:home_page')
 
@@ -88,3 +100,9 @@ def new_smp(request):
                'sigo': sigo, }
 
     return render(request, 'smp_form.html', context)
+
+
+def manage_smp(request):
+    validated = 0
+    # smp_form= SIG.objects.filter(id=1).first()
+

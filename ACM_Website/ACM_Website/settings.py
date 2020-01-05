@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djongo',
 ]
 
 MIDDLEWARE = [
@@ -79,8 +80,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'mongo_db': {
+        'ENGINE': 'djongo',
+        'NAME': 'SMP',
+        'HOST': "mongodb+srv://narayanpai1:PaSsWoRd@cluster0-jwuwm.mongodb.net/test?retryWrites=true&w=majority",
+        'USER': 'narayanpai1',
+        'PASSWORD': 'PaSsWoRd',
     }
 }
+
+DATABASE_ROUTERS = ['SMP.routers.SMPRouter']
 
 
 # Password validation
@@ -120,5 +130,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
-
