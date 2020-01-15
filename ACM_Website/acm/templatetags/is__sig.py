@@ -9,4 +9,8 @@ def is_sig(value):
 	var=re.compile(r'/acm/\d/')
 	return bool(var.match(value))
 
+@register.filter
+def add_value(value, count):
+    return value[count-1]
+
     

@@ -9,4 +9,5 @@ urlpatterns = [
     path('esp/', esp),
     path('project/new',new_project),
     path('events/new',new_event),
+    path('events/update/<int:event_id>/',update_event)
 ]

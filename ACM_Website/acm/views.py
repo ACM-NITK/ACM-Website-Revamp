@@ -102,6 +102,37 @@ def new_event(request):
     return render(request,'acm/event_form.html',context)
 
 
-
-
- 
+def update_event(request,event_id):
+    valid=0
+    if request.method=="POST":
+        event_form=EventsForm(request.POST)
+        password_form=PasswordForm(request.POST)
+        if event_form.is_valid():
+            sig=event_form.cleaned_data["SIG"]
+            name=event_form.cleaned_data["Name"]
+            des=event_form.cleaned_data["Description"]
+            event_obj=Events.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des)
+            event_obj.save()
+            messages.success(request, "Event successfully added")
+            return redirect('/acm/')
+        if password_form.is_valid():
+            if password_form.cleaned_data["key"] == "PASSWORD":
+                valid = 1
+            else:
+                messages.MessageFailure(request, 'Incorrect password')
+    else :
+        password_form=PasswordForm()
+    sigo = SIG.objects.all()
+    events = Events.objects.get(pk=event_id)
+    s=[]
+    s.append(events.name)
+    s.append(events.description)
+    event_form=EventsForm(initial={'SIG':events.sig_id})
+    context={ 
+              'sigo':sigo, 
+              'event_form':event_form,
+              'password_form':password_form ,
+              'valid':valid,
+              's':s,
+             }
+    return render(request,'acm/event_form.html',context)

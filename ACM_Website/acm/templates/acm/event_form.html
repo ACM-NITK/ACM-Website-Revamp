@@ -1,4 +1,5 @@
 {% extends 'acm/base.html' %}
+{% load is__sig %}
 {% block head_content %}
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
@@ -28,8 +29,14 @@
 			  {% else %}
 			  	<div class="container center_div">
 					<div class="form-group row" align="center"> 
-						<label for="{{x.name}}">{{x.name}}</label>	
-						<input type="text" class="form-control" name="{{x.name}}" maxlength="{{x.max_length}}" id="{{x.name}}">
+						<label for="{{x.name}}">{{x.name}}</label>
+						{% if request.get_full_path == '/acm/events/new' %}	
+							<input type="text" class="form-control" name="{{x.name}}" maxlength="{{x.max_length}}" id="{{x.name}}">
+						{% else %}
+							{% with f=s|add_value:forloop.counter0 %}
+								<input type="text" class="form-control" name="{{x.name}}" maxlength="{{x.max_length}}" id="{{x.name}}" value="{{f}}">
+							{% endwith %}
+						{% endif %}
 					</div>
 				</div>
 			 {% endif %}
