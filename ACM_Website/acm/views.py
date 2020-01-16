@@ -113,6 +113,7 @@ def update_event(request,event_id):
             des=event_form.cleaned_data["Description"]
             event_obj=Events.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des)
             event_obj.save()
+            Events.objects.get(pk=event_id).delete()
             messages.success(request, "Event successfully added")
             return redirect('/acm/')
         if password_form.is_valid():
@@ -136,3 +137,44 @@ def update_event(request,event_id):
               's':s,
              }
     return render(request,'acm/event_form.html',context)
+
+def update_project(request,project_id):
+    valid=0
+    if request.method=="POST":
+        project_form=Projectform(request.POST)
+        password_form=PasswordForm(request.POST)
+        if project_form.is_valid():
+            sig=project_form.cleaned_data["SIG"]
+            name=project_form.cleaned_data["Name"]
+            des=project_form.cleaned_data["Description"]
+            rep_link=project_form.cleaned_data["Report_link"]
+            pos_link=project_form.cleaned_data["Poster_link"]
+            project_obj=Projects.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des,report_link=rep_link,poster_link=pos_link)
+            project_obj.save()
+            Projects.objects.get(pk=project_id).delete()
+            messages.success(request, "Project successfully added")
+            return redirect('/acm/')
+        if password_form.is_valid():
+            if password_form.cleaned_data['key']=="PASSWORD":
+                valid=1
+            else:
+                messages.MessageFailure(request,'Incorrect password')
+    else:
+        password_form=PasswordForm()
+    sigo=SIG.objects.all()
+    project=Projects.objects.get(pk=project_id)
+    s=[]
+    s.append(project.name)
+    s.append(project.description)
+    s.append(project.report_link)
+    s.append(project.poster_link)
+    project_form=Projectform(initial={'SIG':project.sig_id})
+    context={ 
+              'sigo':sigo, 
+              'project_form':project_form,
+              'password_form':password_form ,
+              'valid':valid,
+              's':s,
+             }
+    return render(request,'acm/projects_form.html',context)
+
