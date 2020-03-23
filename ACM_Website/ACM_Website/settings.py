@@ -25,7 +25,7 @@ SECRET_KEY = 'g0z4axb*_#!842y==-^smzd$k-70oqk@8gwn-oqt4+fmdzf7cu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['nitk.hosting.acm.org','localhost']
 
 
 # Application definition
@@ -121,4 +121,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'acm/static'),
+)
+
+STATIC_ROOT = os.path.join('/home/nitkhostingacm/public_html', 'staticfiles')
 
