@@ -20,8 +20,8 @@ class Projects(models.Model):
  sig_id = models.ForeignKey(SIG, on_delete=models.CASCADE)
  name = models.CharField(max_length=200)
  description = models.CharField(max_length=5000)
- report_link = models.CharField(max_length=500)
- poster_link = models.CharField(max_length=500)
+ report_link = models.CharField(max_length=500,null=True)
+ poster_link = models.CharField(max_length=500,null=True)
  def __str__(self):
         return self.name
 
