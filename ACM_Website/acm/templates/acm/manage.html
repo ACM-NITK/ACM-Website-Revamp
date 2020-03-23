@@ -46,5 +46,25 @@
                 {% endfor %}                            
             </div>
         </div>
+	</section>
+	
+
+	 <!--================SMPs Area=================-->
+    
+    
+     <section class="about_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">SMPs</h2>
+            	<a href="/smp/new-smp" type="button" class="btn_hover btn_hover_two">ADD AN SMP</a><br><br>
+                {% for s in smps %}
+                    <div class="jumbotron">
+                        <h4>{{ s.name }}</h4>
+                        <br>
+                        <li><a href="/acm/smp/delete/{{ s.id }}" <span class="label">Remove </span></a></li>
+                    </div>
+                {% endfor %}                            
+            </div>
+        </div>
     </section>
 {% endblock %}

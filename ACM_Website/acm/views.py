@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import *
+from SMP.models import *
 import json
 from django.http import HttpResponse
 from .forms import *
@@ -45,8 +46,45 @@ def sig_page(request, sig_id):
 def manage(request, sig_id):
     sig, events, projects, sigo, data = load_sig_contents(sig_id)
     context = {'sig': sig, 'events': events,
-               'projects': projects, 'sigo': sigo , 'data':data}
+               'projects': projects, 'sigo': sigo , 'data':data, 'smps':SMP.objects.filter(sig_id=sig_id)}
     return render(request, 'acm/manage.html', context)
+
+def delete_component(request,type,id):
+    valid=0
+    if request.method == "POST":
+        password_form=PasswordForm(request.POST)
+        if password_form.is_valid():
+            if password_form.cleaned_data["key"] == "PASSWORD":
+                valid = 1
+                if type=="projects":
+                    try:
+                        Projects.objects.get(id=id).delete()
+                        messages.success(request, "Project deleted")
+                    except:
+                        messages.MessageFailure(request, "Couldn't delete project")
+                elif type=="events":
+                    try:
+                        Events.objects.get(id=id).delete()
+                        messages.success(request, "Event deleted")
+                    except:
+                        messages.MessageFailure(request, "Couldn't delete event")
+                elif type=="smp":
+                    try:
+                        SMP.objects.get(id=id).delete()
+                        messages.success(request, "SMP deleted")
+                    except:
+                        messages.MessageFailure(request, "Couldn't delete SMP")
+                
+                return redirect('acm:home_page')
+            else:
+                messages.MessageFailure(request, 'Incorrect password')
+        else:
+            messages.MessageFailure(request, 'Incorrect password')
+    else:
+        password_form=PasswordForm()
+    sigo = SIG.objects.all()
+    context={ 'sigo':sigo, 'password_form':password_form ,'valid':valid }
+    return render(request,'acm/projects_form.html',context)
 
 
 def contact_us(request):
