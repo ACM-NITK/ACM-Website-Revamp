@@ -1,0 +1,50 @@
+{% extends 'acm/base.html' %}
+{% load static %}   
+
+{% block head_content %}
+    <link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}">
+{% endblock %}
+{% block content %}
+
+    <!--================Events Area =================-->
+
+	<section class="about_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+            	<h2>Events</h2>
+				<a href="/acm/events/new" type="button" class="btn_hover btn_hover_two">ADD AN EVENT</a><br><br>
+				{% for z in events %}
+                    <div class="jumbotron">
+                        <h4>{{ z.name }}</h4>
+                        <p>{{ z.description }}</p>    
+                        <br>
+                        <li><a href="/acm/events/delete/{{ z.id }}" <span class="label">Remove </span></a></li>
+                        <li><a href="/acm/events/update/{{ z.id }}"><span class="label">Update </span></a></li></td>
+                    </div>
+                {% endfor %}                            
+            </div>
+        </div>
+	</section>
+
+
+    <!--================Projects Area=================-->
+    
+    
+     <section class="about_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">Projects</h2>
+            	<a href="/acm/project/new" type="button" class="btn_hover btn_hover_two">ADD A PROJECT</a><br><br>
+                {% for p in projects %}
+                    <div class="jumbotron">
+                        <h4>{{ p.name }}</h4>
+                        <p>{{ p.description }}</p>    
+                        <br>
+                        <li><a href="/acm/projects/delete/{{ p.id }}" <span class="label">Remove </span></a></li>
+                        <li><a href="/acm/projects/update/{{ p.id }}"  <span class="label">Update </span></a></li></td>
+                    </div>
+                {% endfor %}                            
+            </div>
+        </div>
+    </section>
+{% endblock %}

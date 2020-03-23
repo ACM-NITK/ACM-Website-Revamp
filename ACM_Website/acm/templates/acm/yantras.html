@@ -16,7 +16,8 @@
                     <div class="banner_content">
                         <h1>{{ sig.name }}</h1>
                         <h3><p>{{data.sub_head}}</p></h3>
-                         <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a> 
+                         <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a><br>
+                         <a href="manage" class="btn_hover btn_hover_two">Manage Yantra</a> 
                     </div>
                 </div>
             </div>
@@ -104,10 +105,6 @@
             </div>
         </div>
         <br><br>
-        <div class="section_title text-center">
-            <h2>Add Events</h2>
-            <a href="/acm/events/new" type="button" class="btn_hover btn_hover_two">ADD EVENT</a>
-        </div>
     </section>
 
     <!--================Events Area=================-->
@@ -130,9 +127,5 @@
             </div>
         </div>
         <br><br>
-        <div class="section_title text-center">
-            <h2>Add Projects</h2>
-            <a href="/acm/project/new" type="button" class="btn_hover btn_hover_two">ADD Project</a>
-        </div>
     </section>
 {% endblock %}

@@ -19,7 +19,7 @@ def home_page(request):
     return render(request, 'acm/index.html', context)
 
 
-def sig_page(request, sig_id):
+def load_sig_contents(sig_id):
     si = SIG.objects.filter(pk=sig_id)
     sig = si[0]
     sigo = SIG.objects.all()
@@ -31,10 +31,22 @@ def sig_page(request, sig_id):
         x=len(sigo)
         for i in range (x):
             if(data2[i]['id']==sig_id):
-                data=data2[i]  
-        context = {'sig': sig, 'events': events,
+                data=data2[i]
+    return sig, events, projects, sigo, data
+
+
+def sig_page(request, sig_id):
+    sig, events, projects, sigo, data = load_sig_contents(sig_id)
+    context = {'sig': sig, 'events': events,
                'projects': projects, 'sigo': sigo , 'data':data}
     return render(request, 'acm/yantras.html', context)
+
+
+def manage(request, sig_id):
+    sig, events, projects, sigo, data = load_sig_contents(sig_id)
+    context = {'sig': sig, 'events': events,
+               'projects': projects, 'sigo': sigo , 'data':data}
+    return render(request, 'acm/manage.html', context)
 
 
 def contact_us(request):

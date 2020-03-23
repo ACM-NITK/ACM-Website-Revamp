@@ -7,6 +7,7 @@ urlpatterns = [
     path('<int:sig_id>/', sig_page, name="sig_page"),
     path('contact_us/', contact_us),
     path('esp/', esp),
+    path('<int:sig_id>/manage',manage),
     path('project/new',new_project),
     path('events/new',new_event),
     path('events/update/<int:event_id>/',update_event),
