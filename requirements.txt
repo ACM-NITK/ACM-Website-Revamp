@@ -2,7 +2,7 @@ bitfinex==0.2.6
 certifi==2019.11.28
 chardet==3.0.4
 Cython==0.29.14
-Django==2.0
+Django==2.2.13
 django-six==1.0.4
 httpretty==0.9.7
 idna==2.8
