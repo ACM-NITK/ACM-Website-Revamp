@@ -1,0 +1,96 @@
+nav {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.acm-logo {
+	height: 8vh;
+}
+
+#place-tags {
+	text-align: center;
+	max-height: 360px;
+	overflow-y: auto;
+}
+
+#place-tags::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+#place-tags::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+#place-tags::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #000;
+}
+
+.tag-section {
+	border-style: solid;
+	border-color: lightgrey;
+	border-width: 1.5px;
+	border-radius: 25px;
+	padding: 10px;
+}
+
+.row {
+	margin: 0;
+	overflow-y: auto;
+}
+
+html, body {
+	height: 100%;
+}
+
+.p-right {
+	padding: 0px !important;
+}
+
+.p-left {
+	padding-top: 10px !important;
+	overflow-y: auto !important;
+}
+
+.inputs {
+	padding-bottom: 10px;
+}
+
+.dir-heading {
+	font-weight: 300 !important;
+}
+
+.fields {
+	margin-bottom: 15px;
+}
+
+.cache-heading {
+	margin-bottom: 0px;
+	font-weight: 300;
+}
+
+.des-line {
+	font-weight: 300;
+	margin-bottom: 30px;
+}
+
+@media only screen and (min-width: 800px) {
+	.p-left {
+		margin-bottom: 15px !important;
+	}
+
+	.des-line {
+		margin-bottom: 0px !important;
+	}
+}
+
+.chip:hover{
+background-color: #80D1FF;
+}

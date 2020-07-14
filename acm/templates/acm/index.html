@@ -1,0 +1,154 @@
+{% extends 'acm/base.html' %}
+{% load static %}   
+{% block head_content %}
+    <link rel="stylesheet" href="{% static 'acm/css/index.css' %}">
+{% endblock %}
+{% block content %}
+    <!--================Header Area =================-->
+    
+    <!--================banner Area =================-->
+    <section class="banner_area d-flex text-center">
+        <div class="container align-self-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_content">
+                        <h1>Association for Computing Machinery</h1>
+                        <h3>Advancing Computing as a Science & Profession</h3>
+                        
+                        
+                         <!--<blink><a href="recruitment_forms.html" class="btn_hover btn_hover_two">Register for Innovision</a> </blink>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--================banner Area =================-->
+    <!--================About Area =================-->
+    <section class="about_area section_gap" id="about">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">About ACM NITK</h2>
+                <p style="font-size: 20px">
+                    {{ descriptions.0.about_acm }}
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!--================About Area =================-->
+    <div class="section_title text-center">
+        <h2>Yantras</h2>
+    </div>
+
+    <!--================Yantras Area =================-->
+    <section class="features_area">
+        <div class= "row row_content">
+        {% for each_sig in descriptions.1 %}
+            <div class="col-sm-12 col-md-4 features_item">
+                <h3>{{ each_sig.sig_name }}</h3>
+                <p>{{ each_sig.description }}</p>
+                <a href="/{{ each_sig.sig_id }}" class="btn_hover view_btn">Read more</a>
+            </div>
+
+        {% endfor %}
+        </div>
+    </section>
+    <!--================Yantras Area =================-->
+
+    <!--================Events Area =================-->
+
+    <section class="events_work_area section_gap" id="events">
+        <div class="section_title text-center" >
+            <h2>Events</h2>
+        </div>
+    
+        <div class="bs-example">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    {% for i in events %}
+                     {% if forloop.first %}
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                    {% else %}
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}"></li>
+                    {% endif %}
+                  {% endfor %}
+                </ol>
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner container">
+                   {% for z in events %}
+                   {% if forloop.first %}
+                      <div class="carousel-item active events_image features_item">
+                    {% else %}
+                      <div class="carousel-item events_image features_item">
+                    {% endif %}
+                        <h3 style="text-align: center">{{ z.name }}</h3>
+                        <p>{{ z.description }}</p>
+                    </div>
+                   {% endfor %}
+                </div>
+                <!-- Carousel controls -->
+                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!--================Events Area=================-->
+
+    <!--================Team Area=================-->
+    <!--<section class="event_blog_area section_gap">-->
+    <!--    <div class="container">-->
+    <!--        <div class="section_title text-center">-->
+    <!--            <h2>Our Team</h2>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--</section>-->
+    <!--================Team Area=================-->
+
+<!-- Section: Team v.1 -->
+<section class="team-section text-center my-5">
+
+  <!-- Section heading -->
+  <h2 class="h1-responsive">Our Amazing Team</h2>
+  <br>
+  <!-- Grid row -->
+  <div class="row">
+
+    <!-- Grid column -->
+    {% for person in special_people %}
+        <div class="col-lg-3 col-md-6 mb-lg-0 mb-5">
+            <div class="avatar">
+              <img src="{% static person.image_path %}" class="rounded-circle z-depth-1"
+                alt="Sample avatar">
+            </div>
+            <h5 class="font-weight-bold mt-4 mb-3">{{ person.name }}</h5>
+            <p class="text-uppercase blue-text"><strong>{{ person.post }}</strong></p>
+            <ul class="list-unstyled mb-0">
+              <!-- Facebook -->
+              <a class="p-2 fa-lg fb-ic" href="{{ person.fb_link }}">
+                <i class="fa fa-facebook-f blue-text"> </i>
+              </a>
+              <!-- LinkedIn -->
+              <a class="p-2 fa-lg ins-ic" href="{{ person.linkedin_link }}">
+                <i class="fa fa-linkedin blue-text"> </i>
+              </a>
+            </ul>
+        </div>
+    {% endfor %}
+    
+
+  </div>
+  <!-- Grid row -->
+
+</section>
+<!-- Section: Team v.1 -->
+
+{% endblock %}

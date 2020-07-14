@@ -1,0 +1,131 @@
+{% extends 'acm/base.html' %}
+{% load static %}   
+
+{% block head_content %}
+    <link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}">
+{% endblock %}
+{% block content %}
+    <!--================Header Area =================-->
+    
+    
+     <!--================banner Area =================-->
+    <section class="banner_area d-flex text-center">
+        <div class="container align-self-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="banner_content">
+                        <h1>{{ sig.name }}</h1>
+                        <h3><p>{{data.sub_head}}</p></h3>
+                         <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a><br>
+                         <a href="manage" class="btn_hover btn_hover_two">Manage Yantra</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================banner Area =================-->
+
+
+    <section class="about_area" style="margin-top:100px">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">What is {{data.name}}?</h2>
+                <p style="font-size: 20px">
+                    {{data.description}}
+                </p>
+            </div>
+
+        </div>
+    </section>
+    
+    <section class="about_area">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">What do we do at {{data.name}}?</h2>
+                <p style="font-size: 20px">
+                   {{data.long_desc}}
+                </p>
+            </div>
+
+        </div>
+    </section>
+    
+        
+    <section class="about_area">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">Our motivation</h2>
+                <p style="font-size: 20px">
+                    {{data.motivation}}
+            </div>
+
+        </div>
+    </section>
+    
+    
+    <!--================Events Area =================-->
+
+    <section class="events_work_area " id="events">
+        <div class="section_title text-center" >
+            <h2>Events</h2>
+        </div>
+    
+        <div class="bs-example">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Carousel indicators -->
+                <ol class="carousel-indicators">
+                    {% for i in events %}
+                     {% if forloop.first %}
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}" class="active"></li>
+                    {% else %}
+                      <li data-target="#myCarousel" data-slide-to="{{ forloop.counter0 }}"></li>
+                    {% endif %}
+                  {% endfor %}
+                </ol>
+                <!-- Wrapper for carousel items -->
+                <div class="carousel-inner container">
+                   {% for z in events %}
+                   {% if forloop.first %}
+                      <div class="carousel-item active events_image features_item">
+                    {% else %}
+                      <div class="carousel-item events_image features_item">
+                    {% endif %}
+                        <h3 style="text-align: center">{{ z.name }}</h3>
+                        <p>{{ z.description }}</p>
+                    </div>
+                   {% endfor %}
+                </div>
+                <!-- Carousel controls -->
+                <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
+        <br><br>
+    </section>
+
+    <!--================Events Area=================-->
+    
+    
+     <section class="about_area section_gap">
+        <div class="container">
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">Projects</h2>
+                <h3 style="margin-bottom:30px">Here is the list of projects that we completed in the year 2018-2019</h3>
+                {% for p in projects %}
+                    <div class="jumbotron">
+                        <h4>{{ p.name }}</h4>
+                        <p>{{ p.description }}</p>    
+                        <br>
+                        <li><a href={{ p.report_link }} <span class="label">Report Link </span></a></li>
+                        <li><a href={{ p.poster_link }}  <span class="label">Poster Link </span></a></li></td>
+                    </div>
+                {% endfor %}                            
+            </div>
+        </div>
+        <br><br>
+    </section>
+{% endblock %}
