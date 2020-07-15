@@ -20,8 +20,18 @@ class Projects(models.Model):
  sig_id = models.ForeignKey(SIG, on_delete=models.CASCADE)
  name = models.CharField(max_length=200)
  description = models.CharField(max_length=5000)
- report_link = models.CharField(max_length=500,null=True)
- poster_link = models.CharField(max_length=500,null=True)
+ display_picture = models.ImageField(upload_to='uploads/projects', null=True)
+ duration_in_months = models.IntegerField(null=True)
+ mentors = models.TextField()
+ members = models.TextField()
+ introduction = models.TextField()
+ method = models.TextField()
+ results = models.TextField()
+ obstacles = models.TextField()
+ conclusion = models.TextField()
+ future_work = models.TextField()
+ references = models.TextField()
+
  def __str__(self):
         return self.name
 

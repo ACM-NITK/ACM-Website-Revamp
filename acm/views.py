@@ -34,6 +34,9 @@ def load_sig_contents(sig_id):
                 data=data2[i]
     return sig, events, projects, sigo, data
 
+def project(request, project_id):
+    context = {'project':Projects.objects.get(id=project_id)}
+    return render(request, 'acm/project.html', context)
 
 def sig_page(request, sig_id):
     sig, events, projects, sigo, data = load_sig_contents(sig_id)

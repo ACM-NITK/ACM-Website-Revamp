@@ -25,7 +25,7 @@ SECRET_KEY = 'g0z4axb*_#!842y==-^smzd$k-70oqk@8gwn-oqt4+fmdzf7cu'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['nitk.acm.org' ]
+ALLOWED_HOSTS = ['*' ]
 
 
 # Application definition
@@ -122,5 +122,8 @@ USE_TZ = True
 
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 

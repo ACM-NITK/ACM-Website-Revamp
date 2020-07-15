@@ -1,0 +1,47 @@
+{% extends 'acm/base.html' %} {% load static %} {% block content %}
+<section class="banner_area d-flex text-center">
+    <div class="container align-self-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner_content">
+                    <h3>
+                        <p>{{project.name}}</p>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="margin-top:100px">
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 style="margin-bottom:30px">Duration</h2>
+        </div>
+        {{ project.duration_in_months }} months
+    </div>
+</section>
+<br /><br />
+{{project}} dcwceer {{project.description}}
+<section style="margin-top:100px">
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 style="margin-bottom:30px">Introduction</h2>
+        </div>
+        {{ project.introduction }}
+    </div>
+</section>
+<br /><br />
+
+<section style="margin-top:100px">
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 style="margin-bottom:30px">Method</h2>
+        </div>
+        {{ project.method }}
+    </div>
+</section>
+<br /><br />
+
+{% endblock %}
+
