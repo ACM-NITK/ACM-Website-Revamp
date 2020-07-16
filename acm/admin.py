@@ -4,6 +4,7 @@ from .models import *
 
 # register all the models to view and edit it through admin-page
 admin.site.register(SIG)
+admin.site.register(ProjectPictures)
 admin.site.register(Events)
 admin.site.register(Projects)
 admin.site.register(Special_people)

@@ -13,34 +13,33 @@
     </div>
 </section>
 
-<section style="margin-top:100px">
-    <div class="container">
-        <div class="section_title text-center">
-            <h2 style="margin-bottom:30px">Duration</h2>
-        </div>
-        {{ project.duration_in_months }} months
-    </div>
-</section>
 <br /><br />
-{{project}} dcwceer {{project.description}}
-<section style="margin-top:100px">
-    <div class="container">
-        <div class="section_title text-center">
-            <h2 style="margin-bottom:30px">Introduction</h2>
-        </div>
-        {{ project.introduction }}
-    </div>
-</section>
-<br /><br />
+<b> display pic</b> = <img src="/media/{{project.display_picture}}" /><br>
+<b> mentors</b> = {{ project.mentors }}<br>
+<b> members</b> = {{ project.members }}<br>
+<b> duration</b> = {{ project.duration_in_months }} months<br>
 
-<section style="margin-top:100px">
-    <div class="container">
-        <div class="section_title text-center">
-            <h2 style="margin-bottom:30px">Method</h2>
-        </div>
-        {{ project.method }}
-    </div>
-</section>
-<br /><br />
+<b> Desciption</b> = {{project.description}}<br>
+<b> introduction</b> = {{ project.introduction }}<br>
+<b> method</b> = {{ project.method }}<br>
+<b> results</b> = {{project.results}}<br>
+{% if project.obstacles %}
+    <b> obstacles</b> = {{project.obstacles}}<br>
+{% endif %}
+
+<b> conclusion</b> = {{project.conclusion}}<br>
+
+{% if project.future_work %}
+<b> future_work</b> = {{project.future_work}}<br>
+{% endif %}
+
+<b> references</b> = {{project.references|linebreaks}}<br>
+
+<b> Pictures </b>
+    {% for picture in pictures %}
+        <img src="/media/{{picture.picture}}" />
+    {% endfor %}
+<br>
+
 
 {% endblock %}

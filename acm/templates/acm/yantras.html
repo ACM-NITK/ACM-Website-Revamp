@@ -1,6 +1,5 @@
 {% extends 'acm/base.html' %}
 {% load static %}   
-
 {% block head_content %}
     <link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}">
 {% endblock %}
@@ -17,6 +16,7 @@
                         <h1>{{ sig.name }}</h1>
                         <h3><p>{{data.sub_head}}</p></h3>
                          <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a><br>
+                        <a href="/expo/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Expo</a><br>
                          <a href="manage" class="btn_hover btn_hover_two">Manage Yantra</a> 
                     </div>
                 </div>
@@ -106,27 +106,5 @@
         </div>
         <br><br>
     </section>
-
-    <!--================Events Area=================-->
     
-    
-     <section class="about_area section_gap">
-        <div class="container">
-            <div class="section_title text-center">
-                <h2 style="margin-bottom:30px">Projects</h2>
-                <h3 style="margin-bottom:30px">Here is the list of projects that we completed in the year 2018-2019</h3>
-                {% for p in projects %}
-                    <div class="jumbotron">
-                        <h4>{{ p.name }}</h4>
-                        <p>{{ p.description }}</p>    
-                        <br>
-                        <img src='{{p.display_picture}}'>
-                        <li><a href={{ p.report_link }} <span class="label">Report Link </span></a></li>
-                        <li><a href={{ p.poster_link }}  <span class="label">Poster Link </span></a></li></td>
-                    </div>
-                {% endfor %}                            
-            </div>
-        </div>
-        <br><br>
-    </section>
 {% endblock %}

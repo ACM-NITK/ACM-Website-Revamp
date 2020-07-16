@@ -35,14 +35,23 @@ def load_sig_contents(sig_id):
     return sig, events, projects, sigo, data
 
 def project(request, project_id):
-    context = {'project':Projects.objects.get(id=project_id)}
+    context = {'project':Projects.objects.get(id=project_id),
+               'sigo': SIG.objects.all(),
+               'pictures': ProjectPictures.objects.filter(project_id=project_id)}
     return render(request, 'acm/project.html', context)
 
 def sig_page(request, sig_id):
-    sig, events, projects, sigo, data = load_sig_contents(sig_id)
-    context = {'sig': sig, 'events': events,
-               'projects': projects, 'sigo': sigo , 'data':data}
+    sig, events, _, sigo, data = load_sig_contents(sig_id)
+    context = {'sig': sig, 'events': events, 'sigo': sigo , 'data':data}
     return render(request, 'acm/yantras.html', context)
+
+def expo(request, sig_id):
+    sig, _, projects, sigo, data = load_sig_contents(sig_id)
+    context = {'projects': projects,
+               'sigo': sigo,
+                'sig': sig}
+
+    return render(request, 'acm/expo.html', context)
 
 
 def manage(request, sig_id):

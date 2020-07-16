@@ -35,6 +35,10 @@ class Projects(models.Model):
  def __str__(self):
         return self.name
 
+class ProjectPictures(models.Model):
+ project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
+ picture = models.ImageField(upload_to = 'uploads/projects', null=True)
+
 class Special_people(models.Model):
  name = models.CharField(max_length=30)  #As only first name is mentioned
  post = models.CharField(max_length=25)
