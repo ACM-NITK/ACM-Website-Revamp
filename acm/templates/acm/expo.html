@@ -4,34 +4,45 @@
 <link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}">
 {% endblock %}
 {% block content %}
+
 <section class="banner_area d-flex text-center">
     <div class="container align-self-center">
         <div class="row">
             <div class="col-md-12">
-                <div class="banner_content">
+                <div class="banner_content text-center">
                     <h1>{{ sig.name }} Project Expo</h1>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<section class="about_area section_gap">
-    <div class="container">
+<section class="about_area mt-5">
+    <div class="container pt-5">
         <div class="section_title text-center">
-            <h2 style="margin-bottom:30px">Projects</h2>
-            <h3 style="margin-bottom:30px">Here is the list of projects that we completed in the year 2018-2019</h3>
-            {% for p in projects %}
-            <div class="jumbotron">
-                <h4>{{ p.name }}</h4>
-                <p>{{ p.description }}</p>
-                <br>
-                <img src='/media/{{p.display_picture}}'>
-                <a href="/project/{{p.id}}">Link</a>
-            </div>
-            {% endfor %}
+            <h2>Projects</h2>
+            <h3>
+                Here is the list of projects that we completed in the year 2019-2020
+            </h3>
         </div>
     </div>
-    <br><br>
+    <br /><br />
 </section>
+
+<section class="container">
+    <div class="row mb-5">
+        {% for p in projects %}
+        <div class="col-lg-4 col-sm-6 col-12">
+            <a href="/project/{{p.id}}" class="text-dark">
+                <div class="card mb-4 hvr-glow">
+                    <img src="/media/{{p.display_picture}}" class="card-img-top" alt="..." />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ p.name }}</h5>
+                    </div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}        
+    </div>
+</section>
+
 {% endblock %}

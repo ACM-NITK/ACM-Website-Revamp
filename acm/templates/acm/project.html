@@ -4,42 +4,105 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="banner_content">
-                    <h3>
-                        <p>{{project.name}}</p>
-                    </h3>
+                    <h2>
+                        {{project.name}}
+                    </h2>
+                    <a href="{{project.meet_link}}" target="_blank">
+                        <button type="button" class="btn btn-primary" style="border-radius: 2em;">
+                            GOT QUESTIONS?
+                        </button></a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<br /><br />
-<b> display pic</b> = <img src="/media/{{project.display_picture}}" /><br>
-<b> mentors</b> = {{ project.mentors }}<br>
-<b> members</b> = {{ project.members }}<br>
-<b> duration</b> = {{ project.duration_in_months }} months<br>
+<section class="container">
+    <div class="row my-5">
+        <div class="col-12 text-center">
+            <img src="/media/{{project.display_picture}}" alt="" />
+        </div>
+        <div class="col-12">
+            {% if project.mentors %}
+                <h3>
+                    MENTORS:
+                </h3>
+                {{ project.mentors|linebreaks }}
+            {% endif %}
 
-<b> Desciption</b> = {{project.description}}<br>
-<b> introduction</b> = {{ project.introduction }}<br>
-<b> method</b> = {{ project.method }}<br>
-<b> results</b> = {{project.results}}<br>
-{% if project.obstacles %}
-    <b> obstacles</b> = {{project.obstacles}}<br>
-{% endif %}
+            {% if project.members %}
+                <h3>MEMBERS:</h3>
+                {{ project.members|linebreaks }}
+            {% endif %}
+            
+            {% if project.duration_in_months %}
+                <h3>DURATION:</h3>
+                <p>{{ project.duration_in_months }} months</p>
+            {% endif %}
 
-<b> conclusion</b> = {{project.conclusion}}<br>
+            {% if project.introduction %}
+                <h3>DESCRIPTION</h3>
+                <p>{{ project.introduction|linebreaks }}</p>
+            {% endif %}
+            
+            {% if project.method %}
+                <h3>METHOD</h3>
+                <p>{{ project.method|linebreaks }}</p>
+            {% endif %}
 
-{% if project.future_work %}
-<b> future_work</b> = {{project.future_work}}<br>
-{% endif %}
+            {% if project.results %}
+                <h3>RESULTS</h3>
+                <p>{{ project.results|linebreaks }}</p>
+            {% endif %}
+            
+            {% if project.obstacles %}
+                <h3>OBSTACLES</h3>
+                <p>
+                    {{ project.obstacles|linebreaks }}
+                </p>
+            {% endif %}
 
-<b> references</b> = {{project.references|linebreaks}}<br>
+            {% if project.conclusion %}
+            <h3>CONCLUSION</h3>
+                <p>
+                    {{ project.conclusion|linebreaks }}
+                </p>
+            {% endif %}
 
-<b> Pictures </b>
-    {% for picture in pictures %}
-        <img src="/media/{{picture.picture}}" />
-    {% endfor %}
-<br>
+            {% if project.future_work %}
+                <h3>FUTURE WORK</h3>
+                {{ project.future_work|linebreaks }}
+            {% endif %}
 
+            {% if project.references %}
+            <p>
+                {{ project.references|linebreaks }}
+            </p>
+            {% endif %}
+            
+            {% if pictures %}
+                <h3>PICTURES</h3>
+                <section class="container">
+                <div class="row mb-5">
+                    {% for picture in pictures %}
+                        <div class="col-lg-4 col-sm-6 col-12">
+                            <a href="" class="text-dark">
+                                <div class="card mb-4 hvr-glow">
+                                    <img src="/media/{{picture.picture}}" class="card-img-top" alt="..." />
+                                    <div class="card-body">
+                                        <h5 class="card-title"><center>{{ picture.title }}</center></h5>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <img src="" />
+                    {% endfor %}
+                </div>
+                </section>
+            {% endif %}
+            
+        </div>
+    </div>
+</section>
 
 {% endblock %}
