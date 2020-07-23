@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import FileExtensionValidator
 # Create your models here.
 
 
@@ -19,7 +19,7 @@ class Events(models.Model):
 class Projects(models.Model):
  sig_id = models.ForeignKey(SIG, on_delete=models.CASCADE)
  name = models.CharField(max_length=200)
- display_picture = models.ImageField(upload_to='uploads/projects', null=True)
+ display_picture = models.ImageField(upload_to='uploads/projects', null=True, validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', ])])
  duration_in_months = models.IntegerField(null=True)
  mentors = models.TextField()
  members = models.TextField()
@@ -37,7 +37,7 @@ class Projects(models.Model):
 
 class ProjectPictures(models.Model):
  project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
- picture = models.ImageField(upload_to = 'uploads/projects', null=True)
+ picture = models.ImageField(upload_to='uploads/projects', null=True, validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', ])])
  title = models.TextField()
 
 class Special_people(models.Model):
