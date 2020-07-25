@@ -34761,3 +34761,239 @@ Not Found: /wp-admin/
 Not Found: /test/wp-admin/
 Not Found: /wordpress/wp-admin/
 2020-07-25 03:13:48.965341 [3838940] Child process with pid: 3844854 was killed by signal: 15, core dump: 0
+Not Found: /wp/wp-admin/
+Not Found: /wp-login.php
+Not Found: /wp-login.php
+Not Found: /old/wp-admin/
+Not Found: /acm/esp
+Internal Server Error: /project/17
+Traceback (most recent call last):
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/nitkhostingacm/trial/acm/views.py", line 38, in project
+    context = {'project':Projects.objects.get(id=project_id),
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/query.py", line 403, in get
+    self.model._meta.object_name
+acm.models.DoesNotExist: Projects matching query does not exist.
+Not Found: /media/
+2020-07-25 04:13:49.099276 [3918036] Child process with pid: 3921804 was killed by signal: 15, core dump: 0
+2020-07-25 04:13:49.208209 [3918036] Child process with pid: 3923843 was killed by signal: 15, core dump: 0
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /wp/wp-admin/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.svg
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.svg
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /wp-content/plugins/apikey/apikey.php
+Not Found: /wp-content/plugins/apikey/cursed.php
+2020-07-25 06:11:24.704364 [4008265] Child process with pid: 4044793 was killed by signal: 15, core dump: 0
+Not Found: /karyavarta_smp_stocks.html
+2020-07-25 06:13:14.725419 [4008265] Child process with pid: 4046434 was killed by signal: 15, core dump: 0
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.svg
+2020-07-25 06:29:49.006161 [4008265] Child process with pid: 4062727 was killed by signal: 15, core dump: 0
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.svg
+Not Found: /media/
+Not Found: /media/
+Not Found: /expo
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+2020-07-25 06:38:27.707780 [4008265] Child process with pid: 4071163 was killed by signal: 15, core dump: 0
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /images/trails/fruit.png
+Not Found: /maps/reddy.jpg
+Not Found: /images/trails/audotorium.png
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+2020-07-25 07:39:57.249563 [4008265] Child process with pid: 4141783 was killed by signal: 15, core dump: 0
+Not Found: /project/meet.google.com/nso-amud-mtr
+Not Found: /project/meet.google.com/nso-amud-mtr
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /expo/
+Not Found: /expo/
+2020-07-25 08:24:11.363915 [4008265] Child process with pid: 4191581 was killed by signal: 15, core dump: 0
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
