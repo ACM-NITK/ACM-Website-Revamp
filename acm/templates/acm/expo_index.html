@@ -1,0 +1,72 @@
+{% extends 'acm/base.html' %} {% load static %} {% block head_content %}
+<link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}" />
+{% endblock %} {% block content %}
+
+<section class="banner_area d-flex text-center">
+    <div class="container align-self-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner_content text-center">
+                    <h1>{{ sig.name }} Project Expo</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="row mb-5">
+        <div class="col-lg-4 col-sm-6 col-12">
+            <div class="card-deck">
+                <a href="expo/1" class="text-dark">
+                    <div class="card mb-4 hvr-glow">
+                        <img src="/media/uploads/sanga.jpg" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">Sanganitra</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="card-deck">
+                        <a href="expo/2" class="text-dark">
+                            <div class="card mb-4 hvr-glow">
+                                <img src="/media/uploads/yantrika.jpeg" class="card-img-top" alt="..." />
+                                <div class="card-body">
+                                    <h5 class="card-title">Yantrika</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="card-deck">
+                        <a href="expo/3" class="text-dark">
+                            <div class="card mb-4 hvr-glow">
+                                <img src="/media/uploads/vidyut.jpeg" class="card-img-top" alt="..." />
+                                <div class="card-body">
+                                    <h5 class="card-title">Vidyut</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="card-deck">
+                        <a href="expo/4" class="text-dark">
+                            <div class="card mb-4 hvr-glow">
+                                <img src="/media/uploads/karya.jpg" class="card-img-top" alt="..." />
+                                <div class="card-body">
+                                    <h5 class="card-title">Kaaryavarta</h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+    </div>
+</section>
+
+{% endblock %}

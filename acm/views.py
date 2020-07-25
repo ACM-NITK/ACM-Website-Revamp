@@ -109,6 +109,9 @@ def esp(request):
     context = {'sigo': sigo}
     return render(request, 'acm/esp.html', context)
 
+def expo_index(request):
+    context = {'sigo': SIG.objects.all()}
+    return render(request, 'acm/expo_index.html', context)
 
 def new_project(request):
     valid=0
