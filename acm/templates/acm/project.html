@@ -8,7 +8,8 @@
                         {{project.name}}
                     </h2>
                     <a href="{{project.meet_link}}" target="_blank">
-                        <button type="button" class="btn btn-primary" style="border-radius: 2em;padding:10px;margin:20px;">
+                        <button type="button" class="btn btn-primary"
+                            style="border-radius: 2em;padding:10px;margin:20px;">
                             STILL GOT QUESTIONS? MEET US HERE!!
                         </button>
                     </a>
@@ -21,19 +22,19 @@
 <section class="container">
     <div class="row my-5">
         <div class="col-12 text-center">
-            <img src="/media/{{project.display_picture}}" alt="" />
+            <img src="/media/{{project.display_picture}}" alt="" / style="width: 50%;height:30vh;">
         </div>
         <div class="col-12">
             {% if project.mentors %}
-                <h3>
-                    MENTORS:
-                </h3>
-                {{ project.mentors|linebreaks }} 
+            <h3>
+                MENTORS:
+            </h3>
+            {{ project.mentors|linebreaks }}
             {% endif %}
             {% if project.members %}
-                <h3>MEMBERS:</h3>
-                {{ project.members|linebreaks }} 
-            {% endif %} 
+            <h3>MEMBERS:</h3>
+            {{ project.members|linebreaks }}
+            {% endif %}
             {% if project.duration_in_months %}
             <h3>DURATION:</h3>
             <p>{{ project.duration_in_months }} months</p>
@@ -49,7 +50,7 @@
             {% if project.results %}
             <h3>RESULTS</h3>
             <p>{{ project.results|linebreaks }}</p>
-            {% endif %} 
+            {% endif %}
             {% if project.obstacles %}
             <h3>OBSTACLES</h3>
             <p>
@@ -64,37 +65,39 @@
             {% endif %}
             {% if project.future_work %}
             <h3>FUTURE WORK</h3>
-            {{ project.future_work|linebreaks }} 
-            {% endif %} 
+            {{ project.future_work|linebreaks }}
+            {% endif %}
             {% if project.references %}
             <p>
                 {{ project.references|linebreaks }}
             </p>
-            {% endif %} 
+            {% endif %}
             {% if pictures %}
             <h3>PICTURES</h3>
             <section class="container">
                 <div class="row mb-5">
                     {% for picture in pictures %}
                     <div class="col-lg-4 col-sm-6 col-12">
-                            <div class="card-deck">
-                                <div class="card mb-4 hvr-glow">
-                                    <img src="/media/{{picture.picture}}" class="card-img-top" alt="..." />
-                                    <div class="card-body">
-                                        <h5 class="card-title">
-                                            <h3>{{ picture.title }}</h3>
-                                        </h5>
-                                    </div>
+                        <div class="card-deck">
+                            <div class="card mb-4 hvr-glow">
+                                <img src="/media/{{picture.picture}}" style="height:270px; width:100%"
+                                    class="card-img-top" alt="..." />
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <h3>{{ picture.title }}</h3>
+                                    </h5>
                                 </div>
                             </div>
+                        </div>
                     </div>
-                    <img src="" />
-                    {% endfor %}
                 </div>
-            </section>
-            {% endif %}
+                <img src="" />
+                {% endfor %}
         </div>
-    </div>
+</section>
+{% endif %}
+</div>
+</div>
 </section>
 
 {% endblock %}

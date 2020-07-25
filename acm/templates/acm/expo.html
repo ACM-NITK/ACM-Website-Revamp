@@ -28,16 +28,33 @@
 <section class="container">
     <div class="row mb-5">
         {% for p in projects %}
-        <div class="col-lg-4 col-sm-6 col-12">
+        <!-- <div class="col-lg-4 col-sm-6 col-12">
             <div class="card-deck">
                 <a href="/project/{{p.id}}" class="text-dark">
-                    <div class="card mb-4 hvr-glow">
-                        <img src="/media/{{p.display_picture}}" class="card-img-top" alt="..." />
+                    <div class="card mb-4 hvr-glow" style="width:300px;height:400px;">
+                        <img src="/media/{{p.display_picture}}" style="width:300px;height:300px;" class="card-img-top"
+                            alt="..." />
                         <div class="card-body">
                             <h5 class="card-title">{{ p.name }}</h5>
                         </div>
                     </div>
                 </a>
+            </div>
+        </div> -->
+
+        <div class="card col-md-4 col-sm-6 col-sm-12">
+            <!-- <div class=" card"> -->
+            <div style="text-align:center">
+                <a href="/project/{{p.id}}" class="text-dark">
+                    <img src="/media/{{p.display_picture}}" alt="Card image cap" class="img-fluid"
+                        style="height:300px; width:100%">
+                </a>
+                <div class="card-body">
+                    <!-- <h5 class="card-title" style="text-align:center" ;><strong>${events.name}</strong></h5>
+                        <p class="card-text">${events.desc}</p> -->
+                    <h5 class="card-title">{{ p.name }}</h5>
+                </div>
+                <!-- </div> -->
             </div>
         </div>
         {% endfor %}
