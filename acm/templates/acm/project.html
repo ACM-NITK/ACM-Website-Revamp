@@ -80,7 +80,8 @@
                     <div class="col-lg-4 col-sm-6 col-12">
                         <div class="card-deck">
                             <div class="card mb-4 hvr-glow">
-                                <img src="/media/{{picture.picture}}" class="card-img-top" alt="..." />
+                                <img src="/media/{{picture.picture}}" style="height:270px; width:100%"
+                                    class="card-img-top" alt="..." />
                                 <div class="card-body">
                                     <h5 class="card-title">
                                         <h3>{{ picture.title }}</h3>
@@ -89,13 +90,14 @@
                             </div>
                         </div>
                     </div>
-                    <img src="" />
-                    {% endfor %}
                 </div>
-            </section>
-            {% endif %}
+                <img src="" />
+                {% endfor %}
         </div>
-    </div>
+</section>
+{% endif %}
+</div>
+</div>
 </section>
 
 {% endblock %}
