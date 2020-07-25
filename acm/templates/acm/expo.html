@@ -41,20 +41,21 @@
                 </a>
             </div>
         </div> -->
-
-        <div class="card col-md-4 col-sm-6 col-sm-12">
-            <!-- <div class=" card"> -->
-            <div style="text-align:center">
-                <a href="/project/{{p.id}}" class="text-dark">
-                    <img src="/media/{{p.display_picture}}" alt="Card image cap" class="img-fluid"
-                        style="height:300px; width:100%">
-                </a>
-                <div class="card-body">
-                    <!-- <h5 class="card-title" style="text-align:center" ;><strong>${events.name}</strong></h5>
+        <div class="card-deck  col-md-4 col-sm-6 col-sm-12">
+            <div class="card" style="margin-bottom: 15px;">
+                <!-- <div class=" card"> -->
+                <div style="text-align:center">
+                    <a href="/project/{{p.id}}" class="text-dark">
+                        <img src="/media/{{p.display_picture}}" alt="Card image cap" class="img-fluid"
+                            style="height:300px; width:100%">
+                    </a>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title" style="text-align:center" ;><strong>${events.name}</strong></h5>
                         <p class="card-text">${events.desc}</p> -->
-                    <h5 class="card-title">{{ p.name }}</h5>
+                        <h5 class="card-title">{{ p.name }}</h5>
+                    </div>
+                    <!-- </div> -->
                 </div>
-                <!-- </div> -->
             </div>
         </div>
         {% endfor %}

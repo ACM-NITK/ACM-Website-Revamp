@@ -78,7 +78,7 @@
             <section class="container">
                 <div class="row mb-5">
                     {% for picture in pictures %}
-                    <div class="col-lg-4 col-sm-6 col-12">
+                    <!-- <div class="col-lg-4 col-sm-6 col-12">
                         <div class="card-deck">
                             <div class="card mb-4 hvr-glow">
                                 <img src="/media/{{picture.picture}}" style="height:270px; width:100%"
@@ -90,15 +90,30 @@
                                 </div>
                             </div>
                         </div>
+                    </div> -->
+                    <div class="card-deck  col-md-4 col-sm-6 col-sm-12">
+                        <div class="card" style="margin-bottom: 15px;">
+                            <!-- <div class=" card"> -->
+                            <div style="text-align:center">
+
+                                <img src="/media/{{picture.picture}}" alt="Card image cap" class="img-fluid"
+                                    style="height:270px; width:100%">
+                                <div class="card-body">
+                                    <!-- <h5 class="card-title" style="text-align:center" ;><strong>${events.name}</strong></h5>
+                                                                <p class="card-text">${events.desc}</p> -->
+                                    <h4 class="card-title">{{ picture.title }}</h4>
+                                </div>
+                                <!-- </div> -->
+                            </div>
+                        </div>
                     </div>
+                    <!-- <img src="" /> -->
+                    {% endfor %}
                 </div>
-                <img src="" />
-                {% endfor %}
+            </section>
+            {% endif %}
         </div>
-</section>
-{% endif %}
-</div>
-</div>
+    </div>
 </section>
 
 {% endblock %}
