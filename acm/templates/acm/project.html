@@ -21,19 +21,19 @@
 <section class="container">
     <div class="row my-5">
         <div class="col-12 text-center">
-            <img src="/media/{{project.display_picture}}" alt="" />
+            <img src="/media/{{project.display_picture}}" style="height:250px" alt="" />
         </div>
         <div class="col-12">
             {% if project.mentors %}
                 <h3>
                     MENTORS:
                 </h3>
-                {{ project.mentors|linebreaks }} 
+                {{ project.mentors|linebreaks }}
             {% endif %}
             {% if project.members %}
                 <h3>MEMBERS:</h3>
-                {{ project.members|linebreaks }} 
-            {% endif %} 
+                {{ project.members|linebreaks }}
+            {% endif %}
             {% if project.duration_in_months %}
             <h3>DURATION:</h3>
             <p>{{ project.duration_in_months }} months</p>
@@ -49,7 +49,7 @@
             {% if project.results %}
             <h3>RESULTS</h3>
             <p>{{ project.results|linebreaks }}</p>
-            {% endif %} 
+            {% endif %}
             {% if project.obstacles %}
             <h3>OBSTACLES</h3>
             <p>
@@ -64,13 +64,13 @@
             {% endif %}
             {% if project.future_work %}
             <h3>FUTURE WORK</h3>
-            {{ project.future_work|linebreaks }} 
-            {% endif %} 
+            {{ project.future_work|linebreaks }}
+            {% endif %}
             {% if project.references %}
             <p>
                 {{ project.references|linebreaks }}
             </p>
-            {% endif %} 
+            {% endif %}
             {% if pictures %}
             <h3>PICTURES</h3>
             <section class="container">
