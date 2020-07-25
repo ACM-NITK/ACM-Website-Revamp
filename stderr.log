@@ -34498,3 +34498,266 @@ Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
 Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
 Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
 Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Internal Server Error: /admin/acm/projects/add/
+Traceback (most recent call last):
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 303, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: acm_projects.duration_in_months may not be NULL
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1553, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1490, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1026, in save_model
+    obj.save()
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/base.py", line 729, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/base.py", line 759, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/base.py", line 842, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/base.py", line 880, in _do_insert
+    using=using, raw=raw)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/query.py", line 1125, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1280, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 303, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: acm_projects.duration_in_months may not be NULL
+2020-07-24 17:50:50.221532 [3280081] Child process with pid: 3280125 was killed by signal: 15, core dump: 0
+2020-07-24 17:50:50.312338 [3280081] Child process with pid: 3280352 was killed by signal: 15, core dump: 0
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /acm/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /wp-includes/wlwmanifest.xml
+Not Found: /xmlrpc.php
+Not Found: /web/wp-includes/wlwmanifest.xml
+Not Found: /wordpress/wp-includes/wlwmanifest.xml
+Not Found: /website/wp-includes/wlwmanifest.xml
+Not Found: /wp/wp-includes/wlwmanifest.xml
+Not Found: /news/wp-includes/wlwmanifest.xml
+Not Found: /2018/wp-includes/wlwmanifest.xml
+Not Found: /2019/wp-includes/wlwmanifest.xml
+Not Found: /shop/wp-includes/wlwmanifest.xml
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /wp1/wp-includes/wlwmanifest.xml
+Not Found: /test/wp-includes/wlwmanifest.xml
+Not Found: /media/wp-includes/wlwmanifest.xml
+Not Found: /wp2/wp-includes/wlwmanifest.xml
+Not Found: /site/wp-includes/wlwmanifest.xml
+Not Found: /cms/wp-includes/wlwmanifest.xml
+Not Found: /sito/wp-includes/wlwmanifest.xml
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Internal Server Error: /admin/acm/projects/add/
+Traceback (most recent call last):
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 303, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: acm_projects.duration_in_months may not be NULL
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 574, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/views/decorators/cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/sites.py", line 223, in inner
+    return view(request, *args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1553, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/utils/decorators.py", line 62, in _wrapper
+    return bound_func(*args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/utils/decorators.py", line 142, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/utils/decorators.py", line 58, in bound_func
+    return func.__get__(self, type(self))(*args2, **kwargs2)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1450, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1490, in _changeform_view
+    self.save_model(request, new_object, form, not add)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/contrib/admin/options.py", line 1026, in save_model
+    obj.save()
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/base.py", line 729, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/base.py", line 759, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/base.py", line 842, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/base.py", line 880, in _do_insert
+    using=using, raw=raw)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/query.py", line 1125, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/models/sql/compiler.py", line 1280, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 100, in execute
+    return super().execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 68, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 77, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/utils.py", line 85, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/nitkhostingacm/virtualenv/trial/3.6/lib/python3.6/site-packages/django/db/backends/sqlite3/base.py", line 303, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: acm_projects.duration_in_months may not be NULL
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /WE DONT HAVE
+Forbidden (CSRF token missing or incorrect.): /admin/login/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /media/
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+Not Found: /staticfiles/acm/css/bootstrap.css.map
+Not Found: /staticfiles/acm/js/popper.min.js.map
+Not Found: /staticfiles/acm/js/bootstrap.min.js.map
+2020-07-24 21:03:23.591097 [3467148] Child process with pid: 3477652 was killed by signal: 15, core dump: 0
+Not Found: /media/
+Not Found: /media/
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /media/
+Not Found: /wp-login.php
+Not Found: /cybersource/index/loadsilentdata
+OSError: LSAPI: Socket read/write error
+Not Found: /realexpayments_hpp/process/process/
+Not Found: /wp-login.php
+Not Found: /wp-login.php
+Not Found: /wp-login.php
+((1, 'Sanganitra'), (2, 'Yantrika'), (3, 'Vidyut'), (4, 'Kaaryavarta'), (5, 'Saahitya'), (6, 'Media and Publicity Team'))
+Not Found: /data/admin/allowurl.txt
+Not Found: /saahitya.html
+Not Found: /data/admin/allowurl.txt
+Not Found: /wp-login.php
+Not Found: /wp-login.php
+Not Found: /data/admin/allowurl.txt
+Not Found: /wp-login.php
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /.well-known/assetlinks.json
+Not Found: /wp-login.php
+Not Found: /wp-login.php
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff2
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.woff
+Not Found: /staticfiles/acm/fonts/fontawesome-webfont.ttf
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /staticfiles/acm/font-awesome/css/font-awesome.min.css
+Not Found: /wp-admin/
+Not Found: /test/wp-admin/
+Not Found: /wordpress/wp-admin/
+2020-07-25 03:13:48.965341 [3838940] Child process with pid: 3844854 was killed by signal: 15, core dump: 0
