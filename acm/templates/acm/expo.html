@@ -1,9 +1,6 @@
-{% extends 'acm/base.html' %}
-{% load static %}
-{% block head_content %}
-<link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}">
-{% endblock %}
-{% block content %}
+{% extends 'acm/base.html' %} {% load static %} {% block head_content %}
+<link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}" />
+{% endblock %} {% block content %}
 
 <section class="banner_area d-flex text-center">
     <div class="container align-self-center">
@@ -32,16 +29,18 @@
     <div class="row mb-5">
         {% for p in projects %}
         <div class="col-lg-4 col-sm-6 col-12">
-            <a href="/project/{{p.id}}" class="text-dark">
-                <div class="card mb-4 hvr-glow">
-                    <img src="/media/{{p.display_picture}}" class="card-img-top" alt="..." />
-                    <div class="card-body">
-                        <h5 class="card-title">{{ p.name }}</h5>
+            <div class="card-deck">
+                <a href="/project/{{p.id}}" class="text-dark">
+                    <div class="card mb-4 hvr-glow">
+                        <img src="/media/{{p.display_picture}}" class="card-img-top" alt="..." />
+                        <div class="card-body">
+                            <h5 class="card-title">{{ p.name }}</h5>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
         </div>
-        {% endfor %}        
+        {% endfor %}
     </div>
 </section>
 

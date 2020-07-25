@@ -27,80 +27,71 @@
                 <h3>
                     MENTORS:
                 </h3>
-                {{ project.mentors|linebreaks }}
+                {{ project.mentors|linebreaks }} 
             {% endif %}
-
             {% if project.members %}
                 <h3>MEMBERS:</h3>
-                {{ project.members|linebreaks }}
-            {% endif %}
-            
+                {{ project.members|linebreaks }} 
+            {% endif %} 
             {% if project.duration_in_months %}
-                <h3>DURATION:</h3>
-                <p>{{ project.duration_in_months }} months</p>
+            <h3>DURATION:</h3>
+            <p>{{ project.duration_in_months }} months</p>
             {% endif %}
-
             {% if project.introduction %}
-                <h3>DESCRIPTION</h3>
-                <p>{{ project.introduction|linebreaks }}</p>
+            <h3>DESCRIPTION</h3>
+            <p>{{ project.introduction|linebreaks }}</p>
             {% endif %}
-            
             {% if project.method %}
-                <h3>METHOD</h3>
-                <p>{{ project.method|linebreaks }}</p>
+            <h3>METHOD</h3>
+            <p>{{ project.method|linebreaks }}</p>
             {% endif %}
-
             {% if project.results %}
-                <h3>RESULTS</h3>
-                <p>{{ project.results|linebreaks }}</p>
-            {% endif %}
-            
+            <h3>RESULTS</h3>
+            <p>{{ project.results|linebreaks }}</p>
+            {% endif %} 
             {% if project.obstacles %}
-                <h3>OBSTACLES</h3>
-                <p>
-                    {{ project.obstacles|linebreaks }}
-                </p>
+            <h3>OBSTACLES</h3>
+            <p>
+                {{ project.obstacles|linebreaks }}
+            </p>
             {% endif %}
-
             {% if project.conclusion %}
             <h3>CONCLUSION</h3>
-                <p>
-                    {{ project.conclusion|linebreaks }}
-                </p>
+            <p>
+                {{ project.conclusion|linebreaks }}
+            </p>
             {% endif %}
-
             {% if project.future_work %}
-                <h3>FUTURE WORK</h3>
-                {{ project.future_work|linebreaks }}
-            {% endif %}
-
+            <h3>FUTURE WORK</h3>
+            {{ project.future_work|linebreaks }} 
+            {% endif %} 
             {% if project.references %}
             <p>
                 {{ project.references|linebreaks }}
             </p>
-            {% endif %}
-            
+            {% endif %} 
             {% if pictures %}
-                <h3>PICTURES</h3>
-                <section class="container">
+            <h3>PICTURES</h3>
+            <section class="container">
                 <div class="row mb-5">
                     {% for picture in pictures %}
-                        <div class="col-lg-4 col-sm-6 col-12">
-                            <a href="" class="text-dark">
+                    <div class="col-lg-4 col-sm-6 col-12">
+                            <div class="card-deck">
                                 <div class="card mb-4 hvr-glow">
                                     <img src="/media/{{picture.picture}}" class="card-img-top" alt="..." />
                                     <div class="card-body">
-                                        <h5 class="card-title"><center>{{ picture.title }}</center></h5>
+                                        <h5 class="card-title">
+                                            <h3>{{ picture.title }}</h3>
+                                        </h5>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                        <img src="" />
+                            </div>
+                    </div>
+                    <img src="" />
                     {% endfor %}
                 </div>
-                </section>
+            </section>
             {% endif %}
-            
         </div>
     </div>
 </section>
