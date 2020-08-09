@@ -39,6 +39,20 @@ class Projects(models.Model):
  def __str__(self):
         return self.name
 
+class Proposals(models.Model):
+    sig_id = models.ForeignKey(SIG, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
+    duration_in_months = models.IntegerField(blank=True)
+    mentors = models.TextField(blank=True)
+    members = models.TextField(blank=True)
+    introduction = models.TextField(blank=True)
+    method = models.TextField(blank=True)
+    existing_work = models.TextField(blank=True)
+    application = models.TextField(blank=True)
+    references = models.TextField(blank=True)
+
+def __str__(self):
+    return self.name
 
 class ProjectPictures(models.Model):
  project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
