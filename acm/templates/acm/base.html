@@ -45,48 +45,53 @@
 				<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
 
 					<ul class="nav navbar-nav menu_nav ml-auto">
-						<li class=" nav-item active"><a class="nav-link" href="/expo">Project
-								Expo</a>
-						<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-						<!-- {% if request.get_full_path == '/' %}
+						{% if request.get_full_path == '/' %}
 						<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
-						{% else %} -->
-
-						<!-- {% endif %} -->
+						{% else %}
+						<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+						{% endif %}
 						{% if request.get_full_path|is_sig %}
 						<li class="nav-item active submenu dropdown">
 							{% else %}
 						<li class="nav-item submenu dropdown">
 							{% endif %}
-							<a href="#yantras" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true" aria-expanded="false">Yantras</a>
+							<a href="#yantras" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">Yantras</a>
 							<ul class="dropdown-menu">
 								{% for x in sigo %}
+								{% if x.id|is_main_sig %}
 								<li class="nav-item"><a class="nav-link" href="/{{ x.pk }}">{{ x.name  }}</a></li>
+								{% endif %}
 								{% endfor %}
 						</li>
-					</ul>
-					</li>
-					<li class="nav-item"><a class="nav-link" href="http://nitk.acm.org/trails.html">Trails</a></li>
-					{% if request.get_full_path == '/contact_us/' %}
-					{% elif request.get_full_path == '/esp/' %}
-					{% elif request.get_full_path == '/project/new' %}
-					{% elif request.get_full_path == '/events/new' %}
-					{% elif "smp" in request.get_full_path %}
-					{% else %}
-					<li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
-					{% endif %}
-					{% if request.get_full_path == '/' %}
-					<li class="nav-item"><a class="nav-link" href="/esp">ESP</a></li>
-					{% endif %}
-					<li class="nav-item"><a class="nav-link" href="https://nitk.acm.org/blog/">Blog</a></li>
-					{% if request.get_full_path == '/contact_us/' %}
-					<li class="nav-item active"><a class="nav-link" href="/contact_us/">Contact</a></li>
-					{% else %}
-					<li class="nav-item"><a class="nav-link" href="/contact_us/">Contact</a></li>
-					{% endif %}
-					<!-- <li class="nav-item"><a class="nav-link" href="/expo">Project Expo</a> -->
-					</li>
+						</ul>
+						</li>
+						{% if '/expo' in request.get_full_path or '/project' in request.get_full_path %}
+						<li class=" nav-item active"><a class="nav-link" href="/expo">Project
+								Expo</a>
+							{% else %}
+						<li class=" nav-item"><a class="nav-link" href="/expo">Project
+								Expo</a>
+						
+							{% endif %}
+						<li class="nav-item"><a class="nav-link" href="http://nitk.acm.org/trails.html">Trails</a></li>
+						{% if request.get_full_path == '/contact_us/' %}
+						{% elif request.get_full_path == '/esp/' %}
+						{% elif request.get_full_path == '/project/new' %}
+						{% elif request.get_full_path == '/events/new' %}
+						{% elif "smp" in request.get_full_path %}
+						{% else %}
+						<li class="nav-item"><a class="nav-link" href="#events">Events</a></li>
+						{% endif %}
+						{% if request.get_full_path == '/' %}
+						<li class="nav-item"><a class="nav-link" href="/esp">ESP</a></li>
+						{% endif %}
+						<li class="nav-item"><a class="nav-link" href="https://nitk.acm.org/blog/">Blog</a></li>
+						{% if request.get_full_path == '/contact_us/' %}
+						<li class="nav-item active"><a class="nav-link" href="/contact_us/">Contact</a></li>
+						{% else %}
+						<li class="nav-item"><a class="nav-link" href="/contact_us/">Contact</a></li>
+						{% endif %}
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="nav-item"><a href="#" class="search"><i class="lnr lnr-magnifier"></i></a></li>

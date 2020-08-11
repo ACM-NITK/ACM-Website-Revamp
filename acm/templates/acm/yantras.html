@@ -1,5 +1,6 @@
 {% extends 'acm/base.html' %}
 {% load static %}   
+{% load is__sig %}
 {% block head_content %}
     <link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}">
 {% endblock %}
@@ -15,8 +16,11 @@
                     <div class="banner_content">
                         <h1>{{ sig.name }}</h1>
                         <h3><p>{{data.sub_head}}</p></h3>
+                        {% if sig.id|is_core_sig %}
+                            <a href="/proposal/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Proposals</a><br>
+                            <a href="/expo/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Expo</a><br>
+                        {% endif %}
                          <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a><br>
-                        <a href="/expo/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Expo</a><br>
                          <!-- <a href="manage" class="btn_hover btn_hover_two">Manage Yantra</a>  -->
                     </div>
                 </div>
@@ -45,18 +49,6 @@
                 <p style="font-size: 20px">
                    {{data.long_desc}}
                 </p>
-            </div>
-
-        </div>
-    </section>
-    
-        
-    <section class="about_area">
-        <div class="container">
-            <div class="section_title text-center">
-                <h2 style="margin-bottom:30px">Our motivation</h2>
-                <p style="font-size: 20px">
-                    {{data.motivation}}
             </div>
 
         </div>

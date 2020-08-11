@@ -5,6 +5,10 @@ from django.core.validators import FileExtensionValidator
 
 class SIG(models.Model):
  name = models.CharField(max_length=200)
+ image = models.ImageField(upload_to='uploads/sigs', blank=True, null=True, validators=[
+     FileExtensionValidator(['jpg', 'jpeg', 'png', ])])
+ mission_statement = models.TextField()
+ vision_statement = models.TextField()
 
  def __str__(self):
         return self.name
@@ -51,12 +55,14 @@ class Proposals(models.Model):
     application = models.TextField(blank=True)
     references = models.TextField(blank=True)
 
+
 def __str__(self):
     return self.name
 
+
 class ProjectPictures(models.Model):
  project_id = models.ForeignKey(Projects, on_delete=models.CASCADE)
- picture = models.ImageField(upload_to='uploads/projects', blank=True,null=True,
+ picture = models.ImageField(upload_to='uploads/projects', blank=True, null=True,
                              validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', ])])
  title = models.TextField(blank=True)
 

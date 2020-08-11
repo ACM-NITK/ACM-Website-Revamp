@@ -1,0 +1,58 @@
+{% extends 'acm/base.html' %} {% load static %} {% block content %}
+<section class="banner_area d-flex text-center">
+    <div class="container align-self-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner_content">
+                    <h2>
+                        {{project.name}}
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container">
+    <div class="row my-5">
+        <div class="col-12 text-center">
+            <img src="/media/{{project.display_picture}}" alt="" / style="width: 50%;height:30vh;">
+        </div>
+        <div class="col-12">
+            {% if project.mentors %}
+            <h3>
+                MENTORS:
+            </h3>
+            {{ project.mentors|linebreaks }}
+            {% endif %}
+            {% if project.members %}
+            <h3>MEMBERS:</h3>
+            {{ project.members|linebreaks }}
+            {% endif %}
+            {% if project.duration_in_months %}
+            <h3>DURATION:</h3>
+            <p>{{ project.duration_in_months }} months</p>
+            {% endif %}
+            {% if project.introduction %}
+            <h3>DESCRIPTION</h3>
+            <p>{{ project.introduction|linebreaks }}</p>
+            {% endif %}
+            {% if project.method %}
+            <h3>METHOD</h3>
+            <p>{{ project.method|linebreaks }}</p>
+            {% endif %}
+            {% if project.future_work %}
+            <h3>FUTURE WORK</h3>
+            {{ project.future_work|linebreaks }}
+            {% endif %}
+            {% if project.references %}
+            <h3>REFERENCES</h3>
+            <p>
+                {{ project.references|linebreaks }}
+            </p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

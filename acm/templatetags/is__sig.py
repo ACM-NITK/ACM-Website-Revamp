@@ -13,4 +13,11 @@ def is_sig(value):
 def add_value(value, count):
     return value[count-1]
 
-    
+
+@register.filter
+def is_core_sig(value):
+    return value <= 4
+
+@register.filter
+def is_main_sig(value):
+    return int(value) <= 5
