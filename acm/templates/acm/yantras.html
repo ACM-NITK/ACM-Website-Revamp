@@ -17,7 +17,7 @@
                         <h1>{{ sig.name }}</h1>
                         <h3><p>{{data.sub_head}}</p></h3>
                         {% if sig.id|is_core_sig %}
-                            <a href="/proposal/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Proposals</a><br>
+                            <!-- <a href="/proposal/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Proposals</a><br> -->
                             <a href="/expo/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Expo</a><br>
                         {% endif %}
                          <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a><br>
@@ -50,7 +50,24 @@
                    {{data.long_desc}}
                 </p>
             </div>
+            {% if sig.vision_statement != 'a' %}
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">Our vision</h2>
+                <p style="font-size: 20px">
+                    {{sig.vision_statement}}
+                </p>
+            </div>
+            {% endif %}
 
+            {% if sig.mission_statement != 'a' %}
+            <div class="section_title text-center">
+                <h2 style="margin-bottom:30px">Our mission</h2>
+                <p style="font-size: 20px">
+                    {{sig.mission_statement}}
+                </p>
+            </div>
+            {% endif %}
+            
         </div>
     </section>
     

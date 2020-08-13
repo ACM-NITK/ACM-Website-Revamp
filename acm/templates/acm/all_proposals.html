@@ -25,29 +25,19 @@
     <br /><br />
 </section>
 
-<section class="container">
-    <div class="row mb-5">
-        {% for p in projects %}
-        <div class="card-deck  col-md-4 col-sm-6 col-sm-12">
-            <div class="card" style="margin-bottom: 15px;">
-                <!-- <div class=" card"> -->
-                <div style="text-align:center">
-                    <a href="/proposal/{{p.id}}" class="text-dark">
-                        <!-- <img src="/media/{{p.display_picture}}" alt="Card image cap" class="img-fluid"
-                            style="height:300px; width:100%"> -->
-                    
-                    <div class="card-body">
-                        <!-- <h5 class="card-title" style="text-align:center" ;><strong>${events.name}</strong></h5>
-                        <p class="card-text">${events.desc}</p> -->
-                        <h5 class="card-title">{{ p.name }}</h5>
-                    </div>
-                    </a>
-                    <!-- </div> -->
+<section class="about_area">
+    <div class="container">
+        <section class="features_area">
+            <div class="row m0">
+                {% for p in projects %}
+                <div class="col-md-4 features_item" style="text-align:center">
+                    <h3 style="text-align:center">{{ p.name }}</h3>
+                    <a href="/proposal/{{p.id}}" class="btn_hover view_btn">Read more</a>
                 </div>
+                {% endfor %}
             </div>
-        </div>
-        {% endfor %}
+        </section>
     </div>
 </section>
-
+</br> </br></br>
 {% endblock %}
