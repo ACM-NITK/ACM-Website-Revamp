@@ -17,10 +17,10 @@
                         <h1>{{ sig.name }}</h1>
                         <h3><p>{{data.sub_head}}</p></h3>
                         {% if sig.id|is_core_sig %}
-                            <!-- <a href="/proposal/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Proposals</a><br> -->
-                            <a href="/expo/{{ sig.pk }}" class="btn_hover btn_hover_two">Project Expo</a><br>
+                            <a href="/expo/{{ sig.pk }}"  style = "width:350px;" class="btn_hover btn_hover_two">Project Expo</a><br>
+                             <a href="/proposal/{{ sig.pk }}"  style = "width:350px;" class="btn_hover btn_hover_two">Project Proposals</a><br> 
                         {% endif %}
-                         <a href="/smp/{{ sig.pk }}" class="btn_hover btn_hover_two">Summer Mentorship Programme</a><br>
+                         <a href="/smp/{{ sig.pk }}"  style = "width:350px;" class="btn_hover btn_hover_two">Summer Mentorship Programme</a><br>
                          <!-- <a href="manage" class="btn_hover btn_hover_two">Manage Yantra</a>  -->
                     </div>
                 </div>

@@ -16,10 +16,10 @@
                     <h1>Association for Computing Machinery</h1>
                     <h3>Advancing Computing as a Science & Profession</h3>
 
-                        <!-- <a href="/proposal" class="btn_hover btn_hover_two">Project Proposals</a><br> -->
+                    <a href="/expo" class="btn_hover btn_hover_two">Project Expo</a><br>
 
 
-                    <!--<blink><a href="recruitment_forms.html" class="btn_hover btn_hover_two">Register for Innovision</a> </blink>-->
+                    <blink><a href="recruitment_forms.html" class="btn_hover btn_hover_two">Register Now!</a> </blink>
 
                 </div>
             </div>
@@ -127,16 +127,17 @@
 
         <!-- Grid column -->
         {% for person in special_people %}
-        <div class="col-lg-3 col-md-6 mb-lg-0 mb-5">
+        <div class="col-lg-3 col-md-6 mb-lg-0 mb-5" style="margin-top:10px">
             <div class="avatar">
-                <img src="{% static person.image_path %}" class="rounded-circle z-depth-1" alt="Sample avatar">
+                <img src="{% static person.image_path %}" style="width: 50%; height:overflow"
+                    class="rounded-circle z-depth-1" alt="Sample avatar">
             </div>
             <h5 class="font-weight-bold mt-4 mb-3">{{ person.name }}</h5>
-            <p class="text-uppercase blue-text"><strong>{{ person.post }}</strong></p>
-            <ul class="list-unstyled mb-0">
+            <p class="text-uppercase blue-text" style="margin-top:-15px"><strong>{{ person.post }}</strong></p>
+            <ul class="list-unstyled mb-0" style="margin-top:-15px">
                 <!-- Facebook -->
                 <a class="p-2 fa-lg fb-ic" href="{{ person.fb_link }}">
-                    <i class="fa fa-facebook-f blue-text"> </i>
+                    <i class="fa fa-facebook-f blue-text" style="margin-top:-15px"> </i>
                 </a>
                 <!-- LinkedIn -->
                 <a class="p-2 fa-lg ins-ic" href="{{ person.linkedin_link }}">
