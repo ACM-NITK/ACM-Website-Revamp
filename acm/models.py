@@ -54,10 +54,8 @@ class Proposals(models.Model):
     existing_work = models.TextField(blank=True)
     application = models.TextField(blank=True)
     references = models.TextField(blank=True)
-
-
-def __str__(self):
-    return self.name
+    def __str__(self):
+        return self.name
 
 
 class ProjectPictures(models.Model):
