@@ -1,49 +1,49 @@
 [
-    { 
-      "id":1,
-      "name": "Sanganitra",
-      "sub_head":"Welcome to the home of code",
-      "description": "Sanganitra is the computer science oriented special interest group of ACM NITK Chapter.",
-      "long_desc":"We are a bunch of people from different walks of life united by a single goal, to code, and to code well. Split into three sub interest groups namely, Security, Machine Learning and Systems, we carry out lively discussions year around on the various developments and complications in the aforementioned fields. We believe that code can do miracles and our projects are a testament to this fact. We also host code oriented events throughout the year and try to establish a platform to bring the best out of the coder in everyone.",
-      "motivation":"We, at Sanganitra, believe that code can create wonders and are driven by the single goal of breathing life into our belief."  
-    },
-    { 
-      "id":2,
-      "name": "Yantrika",
-      "sub_head":"We turn the gears at this club",
-      "description":"Yantrika is a special interest group of ACM-NITK student chapter dedicated to engineering applications in the field of Mechanical, Civil, Chemical and Material Science.",
-      "long_desc":"Through multiple events, KEPs and Projects, Yantrika aims to bring out the technical aspect of engineering in everyone. Be it a beginner or a tech-wizard, Yantrika provides a platform to always learn more!",
-      "motivation":"Yantrika allows its members to harness knowledge and to apply it in practical situations. In the ever-diverse field of engineering, we help people focus on their area of specialization and to explore new areas of interests, be it related to any branch of engineering. Having collaborative projects with other SIGs, Yantrika is the ultimate tech hub for all the budding engineers out there!"
-    },
-    {
-      "id":3,
-      "name": "Vidyut",
-      "sub_head":"Imagination amplified, faults rectified",
-      "description": "Vidyut is a special interest group of ACM-NITK Student Chapter interested in the broad area of Electronics Engineering. Dealing with Electrical and Electronics Engineering, the purview of Vidyut ranges from Robotics to Power Electronics to Signal Processing to Machine Learning.",
-      "long_desc": "We, at Vidyut, are wholeheartedly devoted to applying the principles of engineering in electrical and electronics systems. Designing and building circuits from scratch, whether it be analog or digital, is a hobby for most of us. We train our minds to search, simulate and solve real world problems and delve deeper into the mysteries of processing signals all around us. We encourage and indulge in learning through experience by organising events like Hardwired and regular Knowledge Exchange Programs (KEPs).",
-      "motivation":"Not only is Vidyut a breeding ground for opportunities, but the availability of unlimited resources in terms of guidance and skills from the collective knowledge pool, makes Vidyut an ideal place for anyone looking to nurture their talents in the electrical and electronics fields. The creative projects and workshops at Vidyut give the members an advantage, in a competitive world like ours. Also, the everlasting bonds formed with fellow intellectual members, make Vidyut the perfect place for an enthusiast to belong to."
-    },
-    {
-        "id":4,
-        "name":"Kaaryavarta",
-        "sub_head":"Money runs the world, luckily, we're good at running it!",
-        "description":"Kaaryavarta is the commerce and business oriented Special Interest Group of ACM NITK Chapter.",
-        "long_desc":"It's members are passionate about Finance, Economics, Marketing and Entrepreneurship. So next time you want to know more about the 2008 Financial crisis or why Venezuela is facing economic depression, our members will be more than happy to help! A platform for taking forth new ideas, Kaaryavarta also holds events like Apprentice (which test one's creativity, management skills and ability to tackle pressure) and regular KEPs (Knowledge Exchange Programs).",
-        "motivation":"In a world of constantly changing socioeconomic dynamics, members at Kaaryavarta strive hard to make sense of what's going on in the world and more importantly, what makes things happen. Whether it's the Indian Rupee's exchange rate or the evergreen Capitalism vs Socialism debate, this SIG is always trying to amalgamate new ideas with established business studies."
-    },
-    {
-        "id":5,
-        "name":"Saahitya",
-        "sub_head":"Welcome to the home of ACM's Lit SIG",
-        "description":"Saahitya is a bunch of passionate literature junkies who love to express thoughts and impress minds.",
-        "long_desc":"We are usually found huddled up in the corridors of the pavilion and the classrooms of the main building discussing and dissecting all things lit. We occasionally conduct KEPs open to anyone on topics ranging from history to modern art to hot topics in pop culture. We also have monthly writing sessions, generally an hour devoted to the magic pen can create on paper. We also conduct events, open to all, around the year to help nurture and spread our love for literature.",
-        "motivation":"We love books. We love to discuss. We don't have or need other reasons."
-    },
-    {
-        "id":6,
-        "name":"Media and Publicity Team",
-        "sub_head":"The team responsible for holding aloft the banner which reads ACM",
-        "description":"Just a crew of dynamic and spirited members running the Media and Publicity segment of ACM.",
-        "long_desc":"We work in sync with the other SIGs, with the intent of making the activities of the club accessible and easily available to the viewership. We highlight ongoing projects and events that fall under the umbrella of ACM in order to engage both, the members as well as spectators. With our deviceful ideas and creative acumen, we have come up with projects of our own (ACM Diaries being the most outstanding example)."
-    }
-  ]
+  {
+    "id": 1,
+    "name": "Sanganitra",
+    "sub_head": "Welcome to the home of code",
+    "description": "Sanganitra is the computer science oriented special interest group of ACM NITK Chapter.",
+    "long_desc": "We are a bunch of people from different walks of life united by a single goal, to code, and to code well. Split into five sub interest groups Competitive Programming, Development, Systems, Machine Learning and Theoretical CS, we carry out lively discussions year around on the various developments and complications in the aforementioned fields. We believe that code can do miracles and our projects are a testament to this fact. We also host code oriented events throughout the year and try to establish a platform to bring the best out of the coder in everyone.",
+    "motivation": "We, at Sanganitra, believe that code can create wonders and are driven by the single goal of breathing life into our belief."
+  },
+  {
+    "id": 2,
+    "name": "Yantrika",
+    "sub_head": "We turn the gears at this club",
+    "description": "Yantrika is a special interest group of ACM-NITK student chapter dedicated to engineering applications in the field of Mechanical, Civil, Chemical and Material Science.",
+    "long_desc": "Through multiple events, KEPs and Projects, Yantrika aims to bring out the technical aspect of engineering in everyone. Be it a beginner or a tech-wizard, Yantrika provides a platform to always learn more!",
+    "motivation": "Yantrika allows its members to harness knowledge and to apply it in practical situations. In the ever-diverse field of engineering, we help people focus on their area of specialization and to explore new areas of interests, be it related to any branch of engineering. Having collaborative projects with other SIGs, Yantrika is the ultimate tech hub for all the budding engineers out there!"
+  },
+  {
+    "id": 3,
+    "name": "Vidyut",
+    "sub_head": "Imagination amplified, faults rectified",
+    "description": "Vidyut is a special interest group of ACM-NITK Student Chapter interested in the broad area of Electronics Engineering. Dealing with Electrical and Electronics Engineering, the purview of Vidyut ranges from Robotics to Power Electronics to Signal Processing to Machine Learning.",
+    "long_desc": "We, at Vidyut, are wholeheartedly devoted to applying the principles of engineering in electrical and electronics systems. Designing and building circuits from scratch, whether it be analog or digital, is a hobby for most of us. We train our minds to search, simulate and solve real world problems and delve deeper into the mysteries of processing signals all around us. We encourage and indulge in learning through experience by organising events like Hardwired and regular Knowledge Exchange Programs (KEPs).",
+    "motivation": "Not only is Vidyut a breeding ground for opportunities, but the availability of unlimited resources in terms of guidance and skills from the collective knowledge pool, makes Vidyut an ideal place for anyone looking to nurture their talents in the electrical and electronics fields. The creative projects and workshops at Vidyut give the members an advantage, in a competitive world like ours. Also, the everlasting bonds formed with fellow intellectual members, make Vidyut the perfect place for an enthusiast to belong to."
+  },
+  {
+    "id": 4,
+    "name": "Kaaryavarta",
+    "sub_head": "Money runs the world, luckily, we're good at running it!",
+    "description": "Kaaryavarta is the commerce and business oriented Special Interest Group of ACM NITK Chapter.",
+    "long_desc": "It's members are passionate about Finance, Economics, Marketing and Entrepreneurship. So next time you want to know more about the 2008 Financial crisis or why Venezuela is facing economic depression, our members will be more than happy to help! A platform for taking forth new ideas, Kaaryavarta also holds events like Apprentice (which test one's creativity, management skills and ability to tackle pressure) and regular KEPs (Knowledge Exchange Programs).",
+    "motivation": "In a world of constantly changing socioeconomic dynamics, members at Kaaryavarta strive hard to make sense of what's going on in the world and more importantly, what makes things happen. Whether it's the Indian Rupee's exchange rate or the evergreen Capitalism vs Socialism debate, this SIG is always trying to amalgamate new ideas with established business studies."
+  },
+  {
+    "id": 5,
+    "name": "Saahitya",
+    "sub_head": "Welcome to the home of ACM's Lit SIG",
+    "description": "Saahitya is a bunch of passionate literature junkies who love to express thoughts and impress minds.",
+    "long_desc": "We are usually found huddled up in the corridors of the pavilion and the classrooms of the main building discussing and dissecting all things lit. We occasionally conduct KEPs open to anyone on topics ranging from history to modern art to hot topics in pop culture. We also have monthly writing sessions, generally an hour devoted to the magic pen can create on paper. We also conduct events, open to all, around the year to help nurture and spread our love for literature.",
+    "motivation": "We love books. We love to discuss. We don't have or need other reasons."
+  },
+  {
+    "id": 6,
+    "name": "Media and Publicity Team",
+    "sub_head": "The team responsible for holding aloft the banner which reads ACM",
+    "description": "Just a crew of dynamic and spirited members running the Media and Publicity segment of ACM.",
+    "long_desc": "We work in sync with the other SIGs, with the intent of making the activities of the club accessible and easily available to the viewership. We highlight ongoing projects and events that fall under the umbrella of ACM in order to engage both, the members as well as spectators. With our deviceful ideas and creative acumen, we have come up with projects of our own (ACM Diaries being the most outstanding example)."
+  }
+]
