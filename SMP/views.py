@@ -13,7 +13,7 @@ def home(request, sig_id):
     sig = si[0]
     sigo = SIG.objects.all()
     smps = SMP.objects.filter(sig_id=sig_id)
-    data2= open('acm/static/acm/json/smp.json',encoding='utf-8').read()
+    data2= open('staticfiles/acm/json/smp.json',encoding='utf-8').read()
     data2= json.loads(data2)
     data = ''
     for i in range(5):

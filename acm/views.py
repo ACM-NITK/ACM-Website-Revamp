@@ -12,7 +12,7 @@ def home_page(request):
     special_people = Special_people.objects.all()
 
     # opens the json file and saves the raw contents
-    data = open('acm/static/acm/json/index.json',encoding='utf-8').read()
+    data = open('staticfiles/acm/json/index.json',encoding='utf-8').read()
     descriptions = json.loads(data)
     sigo = SIG.objects.all()
     context = {'events': events,'sigo': sigo, 'descriptions':descriptions,'special_people':special_people}
@@ -25,7 +25,7 @@ def load_sig_contents(sig_id):
     sigo = SIG.objects.all()
     events = Events.objects.filter(sig_id=sig_id)
     projects = Projects.objects.filter(sig_id=sig_id)
-    with open('acm/static/acm/json/yantras.json') as f:
+    with open('staticfiles/acm/json/yantras.json') as f:
         data2 = json.loads(f.read())
         data =''
         x=len(sigo)
