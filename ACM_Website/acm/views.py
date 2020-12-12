@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .models import *
 from SMP.models import *
 import json
@@ -6,7 +5,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .forms import *
 from django.contrib import messages
-from django.shortcuts import redirect
+from django.contrib.auth.hashers import make_password
 
 
 def home_page(request):
@@ -26,7 +25,7 @@ def load_sig_contents(sig_id):
     events = list(Events.objects.filter(sig_id=sig_id).values('id', 'sig_id', 'name', 'description'))
     projects = list(Projects.objects.filter(sig_id=sig_id).values('id', 'sig_id', 'name', 'description', 'report_link',
                                                                   'poster_link'))
-    with open('/home/decoder/ACM-Website-Revamp/ACM_Website/staticfiles/acm/json/yantras.json') as f:
+    with open('acm/static/acm/json/yantras.json') as f:
         data2 = json.loads(f.read())
         data = ''
         for i in range(len(sigo)):
@@ -62,7 +61,7 @@ def delete_component(request, type, id):
         data = json.loads(request_params)
         password_form = PasswordForm(data)
         if password_form.is_valid():
-            if password_form.cleaned_data["key"] == "PASSWORD":
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
                 if type == "projects":
                     try:
@@ -124,7 +123,8 @@ def new_project(request):
             return JsonResponse({'message': 'Project successfully added'}, status=201)
         # TODO: Check code logic
         if password_form.is_valid():
-            if password_form.cleaned_data["key"] == "PASSWORD":
+            # TODO: Use ENV variable to set PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
             else:
                 messages.MessageFailure(request, 'Incorrect password')
@@ -151,7 +151,8 @@ def new_event(request):
             return JsonResponse({'message': 'Event successfully added'}, status=201)
         # TODO: Check code logic
         if password_form.is_valid():
-            if password_form.cleaned_data["key"] == "PASSWORD":
+            # TODO: Use ENV variable to store PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
             else:
                 messages.MessageFailure(request, 'Incorrect password')
@@ -177,7 +178,8 @@ def update_event(request, event_id):
             return JsonResponse({'message': 'Event successfully updated'}, status=201)
         # TODO: Check code logic
         if password_form.is_valid():
-            if password_form.cleaned_data["key"] == "PASSWORD":
+            # TODO: Use ENV variable to store PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
             else:
                 messages.MessageFailure(request, 'Incorrect password')
@@ -212,7 +214,8 @@ def update_project(request, project_id):
             return JsonResponse({'message': 'Project successfully updated'})
         # TODO: Check code logic
         if password_form.is_valid():
-            if password_form.cleaned_data['key'] == "PASSWORD":
+            # TODO: Use ENV variable to store PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
             else:
                 messages.MessageFailure(request, 'Incorrect password')
