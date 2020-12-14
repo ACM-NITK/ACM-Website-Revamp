@@ -1,261 +1,285 @@
-from django.shortcuts import render
+from django.contrib.auth.hashers import make_password
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import *
 from SMP.models import *
 import json
-from django.http import HttpResponse
+from django.http import JsonResponse
 from .forms import *
-from django.contrib import messages
-from django.shortcuts import redirect
+
 
 def home_page(request):
-    events = Events.objects.all()
-    special_people = Special_people.objects.all()
+    events = list(Events.objects.all().values('id', 'sig_id', 'name', 'description'))
+    special_people = list(
+        Special_people.objects.all().values('id', 'name', 'post', 'fb_link', 'linkedin_link', 'image_path'))
 
     # opens the json file and saves the raw contents
-    data = open('staticfiles/acm/json/index.json',encoding='utf-8').read()
-    descriptions = json.loads(data)
-    sigo = SIG.objects.all()
-    context = {'events': events,'sigo': sigo, 'descriptions':descriptions,'special_people':special_people}
-    return render(request, 'acm/index.html', context)
+    sigo = all_sigs()
+    context = {'events': events, 'special_people': special_people, 'sigo': sigo}
+    return JsonResponse(context)
 
 
 def load_sig_contents(sig_id):
-    si = SIG.objects.filter(pk=sig_id)
-    sig = si[0]
-    sigo = SIG.objects.all()
-    events = Events.objects.filter(sig_id=sig_id)
-    projects = Projects.objects.filter(sig_id=sig_id)
-    with open('staticfiles/acm/json/yantras.json') as f:
+    sig = SIG.objects.filter(pk=sig_id).values('id', 'name', 'image', 'mission_statement', 'vision_statement')[0]
+    sigo = all_sigs()
+    events = list(Events.objects.filter(sig_id=sig_id).values('id', 'sig_id', 'name', 'description'))
+    projects = list(Projects.objects.filter(sig_id=sig_id)
+                    .values('id', 'name', 'display_picture', 'duration_in_months', 'mentors',
+                            'members', 'introduction', 'method', 'results', 'obstacles',
+                            'conclusion', 'future_work', 'references', 'meet_link'))
+    with open('acm/static/acm/json/yantras.json') as f:
         data2 = json.loads(f.read())
-        data =''
-        x=len(sigo)
-        for i in range (x):
-            if(data2[i]['id']==sig_id):
-                data=data2[i]
+        data = ''
+        for i in range(len(sigo)):
+            if data2[i]['id'] == sig_id:
+                data = data2[i]
     return sig, events, projects, sigo, data
 
+
 def sig_page(request, sig_id):
-    sig, events, _, sigo, data = load_sig_contents(sig_id)
-    context = {'sig': sig, 'events': events, 'sigo': sigo , 'data':data}
-    return render(request, 'acm/yantras.html', context)
+    sig, events, projects, sigo, data = load_sig_contents(sig_id)
+    context = {'sig': sig, 'events': events,
+               'projects': projects, 'sigo': sigo, 'data': data}
+    return JsonResponse(context)
+
 
 def expo_index(request):
-    context = {'sigo': SIG.objects.all()}
-    return render(request, 'acm/expo_index.html', context)
+    context = {'sigo': all_sigs()}
+    return JsonResponse(context)
+
 
 def expo(request, sig_id):
     sig, _, projects, sigo, data = load_sig_contents(sig_id)
     context = {'projects': projects,
                'sigo': sigo,
-                'sig': sig}
+               'sig': sig}
 
-    return render(request, 'acm/expo.html', context)
+    return JsonResponse(context)
+
 
 def project(request, project_id):
-    context = {'project': Projects.objects.get(id=project_id),
-               'sigo': SIG.objects.all(),
-               'pictures': ProjectPictures.objects.filter(project_id=project_id)}
-    return render(request, 'acm/project.html', context)
+    context = {'project': Projects.objects.filter(id=project_id)
+                                  .values('id', 'name', 'display_picture', 'duration_in_months', 'mentors',
+                                          'members', 'introduction', 'method', 'results', 'obstacles',
+                                          'conclusion', 'future_work', 'references', 'meet_link')[0],
+               'sigo': all_sigs(),
+               'pictures': list(ProjectPictures.objects.filter(project_id=project_id)
+                                .values('id', 'project_id', 'picture', 'title'))}
+    return JsonResponse(context)
+
 
 def proposal_index(request):
-    context = {'sigo': SIG.objects.all()}
-    return render(request, 'acm/proposal_index.html', context)
+    context = {'sigo': all_sigs()}
+    return JsonResponse(context)
+
 
 def all_proposals(request, sig_id):
-    context = {'projects': Proposals.objects.filter(sig_id = sig_id),
-               'sigo': SIG.objects.all(),
-               'sig': SIG.objects.get(id=sig_id)}
+    context = {'projects': list(Proposals.objects.filter(sig_id=sig_id)
+                                .values('id', 'sig_id', 'name', 'duration_in_months', 'mentors', 'members',
+                                        'introduction', 'method', 'existing_work', 'application', 'references')),
+               'sigo': all_sigs(),
+               'sig':
+                   SIG.objects.filter(id=sig_id).values('id', 'name', 'image', 'mission_statement', 'vision_statement')[
+                       0]}
 
-    return render(request, 'acm/all_proposals.html', context)
+    return JsonResponse(context)
+
 
 def proposal(request, proposal_id):
-    print(proposal_id)
-    context = {'project': Proposals.objects.get(id=proposal_id),
-               'sigo': SIG.objects.all()}
+    context = {'project': Proposals.objects.filter(id=proposal_id)
+                                   .values('id', 'sig_id', 'name', 'duration_in_months', 'mentors', 'members',
+                                           'introduction', 'method', 'existing_work', 'application', 'references')[0],
+               'sigo': all_sigs()}
 
-    return render(request,'acm/proposal.html', context)
+    return JsonResponse(context)
+
 
 def manage(request, sig_id):
     sig, events, projects, sigo, data = load_sig_contents(sig_id)
     context = {'sig': sig, 'events': events,
-               'projects': projects, 'sigo': sigo , 'data':data, 'smps':SMP.objects.filter(sig_id=sig_id)}
-    return render(request, 'acm/manage.html', context)
+               'projects': projects, 'sigo': sigo, 'data': data,
+               'smps':
+                   list(SMP.objects
+                        .filter(sig_id=sig_id).values('id', 'sig_id', 'name', 'mentors', 'overview',
+                                                      'platform_of_tutoring'))
+               }
+    return JsonResponse(context)
 
-def delete_component(request,type,id):
-    valid=0
+
+@csrf_exempt
+def delete_component(request, type, id):
+    valid = 0
     if request.method == "POST":
-        password_form=PasswordForm(request.POST)
+        request_params = request.body.decode('utf-8')
+        data = json.loads(request_params)
+        password_form = PasswordForm(data)
         if password_form.is_valid():
-            if password_form.cleaned_data["key"] == "s@ng@madethiz":
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
-                if type=="projects":
+                if type == "projects":
                     try:
                         Projects.objects.get(id=id).delete()
-                        messages.success(request, "Project deleted")
+                        return JsonResponse({'message': 'Project successfully deleted'}, status=204)
                     except:
-                        messages.MessageFailure(request, "Couldn't delete project")
-                elif type=="events":
+                        return JsonResponse({'message': "Couldn't delete project"}, status=422)
+                elif type == "events":
                     try:
                         Events.objects.get(id=id).delete()
-                        messages.success(request, "Event deleted")
+                        return JsonResponse({'message': 'Event successfully deleted'}, status=204)
                     except:
-                        messages.MessageFailure(request, "Couldn't delete event")
-                elif type=="smp":
+                        return JsonResponse({'message': "Couldn't delete event"}, status=422)
+                elif type == "smp":
                     try:
                         SMP.objects.get(id=id).delete()
-                        messages.success(request, "SMP deleted")
+                        return JsonResponse({'message': 'SMP successfully deleted'}, status=204)
                     except:
-                        messages.MessageFailure(request, "Couldn't delete SMP")
-                
-                return redirect('acm:home_page')
+                        return JsonResponse({'message': "Couldn't delete SMP"}, status=422)
             else:
-                messages.MessageFailure(request, 'Incorrect password')
+                return JsonResponse({'message': 'Incorrect password'}, status=401)
         else:
-            messages.MessageFailure(request, 'Incorrect password')
-    else:
-        password_form=PasswordForm()
-    sigo = SIG.objects.all()
-    context={ 'sigo':sigo, 'password_form':password_form ,'valid':valid }
-    return render(request,'acm/projects_form.html',context)
+            return JsonResponse({'message': 'Incorrect password'}, status=401)
+    sigo = all_sigs()
+    context = {'sigo': sigo, 'valid': valid}
+    return JsonResponse(context)
 
 
 def contact_us(request):
-    sigo = SIG.objects.all()
+    sigo = all_sigs()
     context = {'sigo': sigo}
-    return render(request, 'acm/contact_us.html', context)
+    return JsonResponse(context)
 
 
 def esp(request):
-    sigo = SIG.objects.all()
+    sigo = all_sigs()
     context = {'sigo': sigo}
-    return render(request, 'acm/esp.html', context)
+    return JsonResponse(context)
 
+
+@csrf_exempt
 def new_project(request):
-    valid=0
+    valid = 0
     if request.method == "POST":
-        project_form=Projectform(request.POST)
-        password_form=PasswordForm(request.POST)
+        request_params = request.body.decode('utf-8')
+        data = json.loads(request_params)
+        project_form = Projectform(data)
+        password_form = PasswordForm(data)
         if project_form.is_valid():
-            sig=project_form.cleaned_data["SIG"]
-            name=project_form.cleaned_data["Name"]
-            des=project_form.cleaned_data["Description"]
-            rep_link=project_form.cleaned_data["Report_link"]
-            pos_link=project_form.cleaned_data["Poster_link"]
-            project_obj=Projects.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des,report_link=rep_link,poster_link=pos_link)
+            sig = project_form.cleaned_data["SIG"]
+            name = project_form.cleaned_data["Name"]
+            des = project_form.cleaned_data["Description"]
+            rep_link = project_form.cleaned_data["Report_link"]
+            pos_link = project_form.cleaned_data["Poster_link"]
+            project_obj = Projects.objects.create(sig_id=SIG.objects.get(pk=sig), name=name, description=des,
+                                                  report_link=rep_link, poster_link=pos_link)
             project_obj.save()
-            messages.success(request, "Project successfully added")
-            return redirect('/acm/')
+            # TODO: Check if redirect should be there (or) render a successful message
+            return JsonResponse({'message': 'Project successfully added'}, status=201)
+        # TODO: Check code logic
         if password_form.is_valid():
-            if password_form.cleaned_data["key"] == "s@ng@madethiz":
+            # TODO: Use ENV variable to set PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
             else:
-                messages.MessageFailure(request, 'Incorrect password')   
-    else :
-        password_form=PasswordForm()
-        project_form=Projectform()
-    sigo = SIG.objects.all()
-    context={ 'sigo':sigo, 'project_form':project_form, 'password_form':password_form ,'valid':valid }
-    return render(request,'acm/projects_form.html',context)
+                return JsonResponse({'message': 'Incorrect Password'}, status=401)
+    sigo = all_sigs()
+    context = {'sigo': sigo, 'valid': valid}
+    return JsonResponse(context)
 
+
+@csrf_exempt
 def new_event(request):
-    valid=0
-    if request.method=="POST":
-        event_form=EventsForm(request.POST)
-        password_form=PasswordForm(request.POST)
+    valid = 0
+    if request.method == "POST":
+        request_params = request.body.decode('utf-8')
+        data = json.loads(request_params)
+        event_form = EventsForm(data)
+        password_form = PasswordForm(data)
         if event_form.is_valid():
-            sig=event_form.cleaned_data["SIG"]
-            name=event_form.cleaned_data["Name"]
-            des=event_form.cleaned_data["Description"]
-            event_obj=Events.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des)
+            sig = event_form.cleaned_data["SIG"]
+            name = event_form.cleaned_data["Name"]
+            des = event_form.cleaned_data["Description"]
+            event_obj = Events.objects.create(sig_id=SIG.objects.get(pk=sig), name=name, description=des)
             event_obj.save()
-            messages.success(request, "Event successfully added")
-            return redirect('/acm/')
+            # TODO: Check if redirect should be there (or) render a successful message
+            return JsonResponse({'message': 'Event successfully added'}, status=201)
         if password_form.is_valid():
-            if password_form.cleaned_data["key"] == "s@ng@madethiz":
+            # TODO: Use ENV variable to store PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
             else:
-                messages.MessageFailure(request, 'Incorrect password')
-    else :
-        password_form=PasswordForm()
-        event_form=EventsForm()
-    sigo = SIG.objects.all()
-    context={ 'sigo':sigo, 'event_form':event_form, 'password_form':password_form ,'valid':valid }
-    return render(request,'acm/event_form.html',context)
+                return JsonResponse({'message': 'Incorrect Password'}, status=401)
+    sigo = all_sigs()
+    context = {'sigo': sigo, 'valid': valid}
+    return JsonResponse(context)
 
 
-def update_event(request,event_id):
-    valid=0
-    if request.method=="POST":
-        event_form=EventsForm(request.POST)
-        password_form=PasswordForm(request.POST)
+@csrf_exempt
+def update_event(request, event_id):
+    valid = 0
+    if request.method == "POST":
+        request_params = request.body.decode('utf-8')
+        data = json.loads(request_params)
+        event_form = EventsForm(data)
+        password_form = PasswordForm(data)
         if event_form.is_valid():
-            sig=event_form.cleaned_data["SIG"]
-            name=event_form.cleaned_data["Name"]
-            des=event_form.cleaned_data["Description"]
-            event_obj=Events.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des)
-            event_obj.save()
-            Events.objects.get(pk=event_id).delete()
-            messages.success(request, "Event successfully added")
-            return redirect('/acm/')
+            sig = event_form.cleaned_data["SIG"]
+            name = event_form.cleaned_data["Name"]
+            des = event_form.cleaned_data["Description"]
+            Events.objects.filter(pk=event_id).update(sig_id=SIG.objects.get(pk=sig), name=name, description=des)
+            # TODO: Check if redirect should be there (or) render a successful message
+            return JsonResponse({'message': 'Event successfully updated'}, status=201)
         if password_form.is_valid():
-            if password_form.cleaned_data["key"] == "s@ng@madethiz":
+            # TODO: Use ENV variable to store PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 valid = 1
             else:
-                messages.MessageFailure(request, 'Incorrect password')
-    else :
-        password_form=PasswordForm()
-    sigo = SIG.objects.all()
+                return JsonResponse({'message': 'Incorrect Password'}, status=401)
+    sigo = all_sigs()
     events = Events.objects.get(pk=event_id)
-    s=[]
-    s.append(events.name)
-    s.append(events.description)
-    event_form=EventsForm(initial={'SIG':events.sig_id})
-    context={ 
-              'sigo':sigo, 
-              'event_form':event_form,
-              'password_form':password_form ,
-              'valid':valid,
-              's':s,
-             }
-    return render(request,'acm/event_form.html',context)
+    s = [events.id, events.sig_id.id, events.name, events.description]
+    context = {
+        'sigo': sigo,
+        'valid': valid,
+        's': s,
+    }
+    return JsonResponse(context)
 
-def update_project(request,project_id):
-    valid=0
-    if request.method=="POST":
-        project_form=Projectform(request.POST)
-        password_form=PasswordForm(request.POST)
+
+@csrf_exempt
+def update_project(request, project_id):
+    valid = 0
+    if request.method == "POST":
+        request_params = request.body.decode('utf-8')
+        data = json.loads(request_params)
+        project_form = Projectform(data)
+        password_form = PasswordForm(data)
         if project_form.is_valid():
-            sig=project_form.cleaned_data["SIG"]
-            name=project_form.cleaned_data["Name"]
-            des=project_form.cleaned_data["Description"]
-            rep_link=project_form.cleaned_data["Report_link"]
-            pos_link=project_form.cleaned_data["Poster_link"]
-            project_obj=Projects.objects.create(sig_id=SIG.objects.get(pk=sig),name=name,description=des,report_link=rep_link,poster_link=pos_link)
-            project_obj.save()
-            Projects.objects.get(pk=project_id).delete()
-            messages.success(request, "Project successfully added")
-            return redirect('/acm/')
+            sig = project_form.cleaned_data["SIG"]
+            name = project_form.cleaned_data["Name"]
+            des = project_form.cleaned_data["Description"]
+            rep_link = project_form.cleaned_data["Report_link"]
+            pos_link = project_form.cleaned_data["Poster_link"]
+            Projects.objects.filter(pk=project_id).update(sig_id=SIG.objects.get(pk=sig), name=name, description=des,
+                                                          report_link=rep_link, poster_link=pos_link)
+            # TODO: Check if redirect should be there (or) render a successful message
+            return JsonResponse({'message': 'Project successfully updated'})
         if password_form.is_valid():
-            if password_form.cleaned_data['key']=="s@ng@madethiz":
-                valid=1
+            # TODO: Use ENV variable to store PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
+                valid = 1
             else:
-                messages.MessageFailure(request,'Incorrect password')
-    else:
-        password_form=PasswordForm()
-    sigo=SIG.objects.all()
-    project=Projects.objects.get(pk=project_id)
-    s=[]
-    s.append(project.name)
-    s.append(project.description)
-    s.append(project.report_link)
-    s.append(project.poster_link)
-    project_form=Projectform(initial={'SIG':project.sig_id})
-    context={ 
-              'sigo':sigo, 
-              'project_form':project_form,
-              'password_form':password_form ,
-              'valid':valid,
-              's':s,
-             }
-    return render(request,'acm/projects_form.html',context)
+                return JsonResponse({'message': 'Incorrect Password'}, status=401)
+    sigo = all_sigs()
+    project = Projects.objects.get(pk=project_id)
+    s = [project.id, project.sig_id.id, project.name, project.description, project.report_link, project.poster_link]
+    context = {
+        'sigo': sigo,
+        'valid': valid,
+        's': s,
+    }
+    return JsonResponse(context)
 
+
+# Common block
+def all_sigs():
+    return list(SIG.objects.all().values('id', 'name', 'image', 'mission_statement', 'vision_statement'))
