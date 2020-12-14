@@ -1,42 +1,46 @@
-from django.shortcuts import render
+from django.contrib.auth.hashers import make_password
+from django.views.decorators.csrf import csrf_exempt
+
 from .models import *
 from acm.models import *
-from django.http import HttpResponse
+from django.http import JsonResponse
 import json
 from .forms import *
-from django.shortcuts import redirect
-from django.contrib import messages
 
 
 def home(request, sig_id):
-    si = SIG.objects.filter(pk=sig_id)
-    sig = si[0]
-    sigo = SIG.objects.all()
-    smps = SMP.objects.filter(sig_id=sig_id)
-    data2= open('staticfiles/acm/json/smp.json',encoding='utf-8').read()
-    data2= json.loads(data2)
-    data = ''
-    for i in range(5):
-        if(int(data2[i]['id']) == sig_id):
-            data = data2[i]
-    contex = {'sig': sig, 'sigo': sigo, 'smps': smps,'data':data}
-    return render(request, 'spms.html', contex)
+    sig = SIG.objects.filter(pk=sig_id).values('id', 'name', 'image', 'mission_statement', 'vision_statement')[0]
+    sigo = all_sigs()
+    smps = list(SMP
+                .objects
+                .filter(sig_id=sig_id).values('id', 'sig_id', 'name', 'mentors', 'overview', 'platform_of_tutoring'))
+    with open('acm/static/acm/json/smp.json') as f:
+        data2 = json.loads(f.read())
+        data = ''
+        for i in range(5):
+            if int(data2[i]['id']) == sig_id:
+                data = data2[i]
+    context = {'sig': sig, 'sigo': sigo, 'smps': smps, 'data': data}
+    return JsonResponse(context)
 
 
 def des(request, sig_id, smp_id):
-    smp = (SMP.objects.filter(pk=smp_id))[0]
-    smp_des = SMP_des.objects.filter(smp_id=smp_id)
-    contex = {'smp': smp, 'smp_des': smp_des}
-    return render(request, 'smp_des.html', contex)
+    smp = SMP.objects.filter(pk=smp_id).values('id', 'sig_id', 'name', 'mentors', 'overview', 'platform_of_tutoring')[0]
+    smp_des = list(SMP_des.objects.filter(smp_id=smp_id).values('id', 'smp_id', 'sub_heading', 'sub_des'))
+    context = {'smp': smp, 'smp_des': smp_des}
+    return JsonResponse(context)
 
 
+@csrf_exempt
 def new_smp(request):
     validated = 0
     static_fields = ['Name', 'Mentors', 'Overview', 'Platform']
     dynammic_fields = ['Exercise', 'Prerequisite', 'Course-content']
     if request.method == "POST":
-        password_form = PasswordForm(request.POST)
-        smp_form = SMPForm(request.POST)
+        request_params = request.body.decode('utf-8')
+        data = json.loads(request_params)
+        password_form = PasswordForm(data)
+        smp_form = SMPForm(data)
         if smp_form.is_valid():
             sig = smp_form.cleaned_data["SIG"]
             name = smp_form.cleaned_data["Name"]
@@ -44,47 +48,45 @@ def new_smp(request):
             overview = smp_form.cleaned_data["Overview"]
             platform = smp_form.cleaned_data["Platform"]
             SMP_object = SMP.objects.create(
-                sig_id=SIG.objects.get(pk=sig), name=name, mentors=mentors, overview=overview, platform_of_tutoring=platform)
+                sig_id=SIG.objects.get(pk=sig), name=name,
+                mentors=mentors, overview=overview, platform_of_tutoring=platform)
             SMP_object.save()
 
             for field in dynammic_fields:
                 for i in range(smp_form.cleaned_data[field.lower() + "_freq"]):
-                    des = smp_form.cleaned_data[field+'_' + str(i+1)]
+                    des = smp_form.cleaned_data[field + '_' + str(i + 1)]
                     if des:
                         SMP_des_object = SMP_des.objects.create(
                             smp_id=SMP_object, sub_heading=field, sub_des=des)
                         SMP_des_object.save()
 
             for i in range(smp_form.cleaned_data["week_freq"]):
-                for j in range(smp_form.cleaned_data["week_"+str(i+1)+"_description_freq"]):
+                for j in range(smp_form.cleaned_data["week_" + str(i + 1) + "_description_freq"]):
                     des = smp_form.cleaned_data["Week_" +
-                                                str(i+1)+"_Description_"+str(j+1)]
+                                                str(i + 1) + "_Description_" + str(j + 1)]
                     if des:
                         SMP_des_object = SMP_des.objects.create(
-                            smp_id=SMP_object, sub_heading="Week "+str(i+1), sub_des=des)
+                            smp_id=SMP_object, sub_heading="Week " + str(i + 1), sub_des=des)
                         SMP_des_object.save()
-
-            messages.success(request, "SMP created")
-            return redirect('acm:home_page')
+            return JsonResponse({'message': 'SMP successfully created'}, status=201)
 
         if password_form.is_valid():
-            # To be hidden somehow
-            if password_form.cleaned_data["key"] == "s@ng@madethiz":
+            # TODO: Use ENV variable to store PASSWORD
+            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
                 validated = 1
             else:
-                messages.MessageFailure(request, 'Incorrect password')
+                JsonResponse({'message': 'Incorrect password'}, status=401)
 
-    else:
-        password_form = PasswordForm()
-        smp_form = SMPForm()
-
-    sigo = SIG.objects.all()
-    context = {'password_form': password_form,
-               'smp_form': smp_form,
-               'validated': validated,
+    sigo = all_sigs()
+    context = {'validated': validated,
                'static_fields': static_fields,
                'dynammic_fields': dynammic_fields,
                'range_of_8': [1, 2, 3, 4, 5, 6, 7, 8],
                'sigo': sigo, }
 
-    return render(request, 'smp_form.html', context)
+    return JsonResponse(context)
+
+
+# Common block
+def all_sigs():
+    return list(SIG.objects.all().values('id', 'name', 'image', 'mission_statement', 'vision_statement'))
