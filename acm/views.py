@@ -1,5 +1,6 @@
 from django.contrib.auth.hashers import make_password
 from django.views.decorators.csrf import csrf_exempt
+import os
 
 from .models import *
 from SMP.models import *
@@ -114,7 +115,7 @@ def delete_component(request, type, id):
         data = json.loads(request_params)
         password_form = PasswordForm(data)
         if password_form.is_valid():
-            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
+            if make_password(password_form.cleaned_data["key"]) == make_password(os.environ["PASSWORD"]):
                 valid = 1
                 if type == "projects":
                     try:
@@ -172,12 +173,9 @@ def new_project(request):
             project_obj = Projects.objects.create(sig_id=SIG.objects.get(pk=sig), name=name, description=des,
                                                   report_link=rep_link, poster_link=pos_link)
             project_obj.save()
-            # TODO: Check if redirect should be there (or) render a successful message
             return JsonResponse({'message': 'Project successfully added'}, status=201)
-        # TODO: Check code logic
         if password_form.is_valid():
-            # TODO: Use ENV variable to set PASSWORD
-            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
+            if make_password(password_form.cleaned_data["key"]) == make_password(os.environ["PASSWORD"]):
                 valid = 1
             else:
                 return JsonResponse({'message': 'Incorrect Password'}, status=401)
@@ -200,11 +198,9 @@ def new_event(request):
             des = event_form.cleaned_data["Description"]
             event_obj = Events.objects.create(sig_id=SIG.objects.get(pk=sig), name=name, description=des)
             event_obj.save()
-            # TODO: Check if redirect should be there (or) render a successful message
             return JsonResponse({'message': 'Event successfully added'}, status=201)
         if password_form.is_valid():
-            # TODO: Use ENV variable to store PASSWORD
-            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
+            if make_password(password_form.cleaned_data["key"]) == make_password(os.environ["PASSWORD"]):
                 valid = 1
             else:
                 return JsonResponse({'message': 'Incorrect Password'}, status=401)
@@ -226,11 +222,9 @@ def update_event(request, event_id):
             name = event_form.cleaned_data["Name"]
             des = event_form.cleaned_data["Description"]
             Events.objects.filter(pk=event_id).update(sig_id=SIG.objects.get(pk=sig), name=name, description=des)
-            # TODO: Check if redirect should be there (or) render a successful message
             return JsonResponse({'message': 'Event successfully updated'}, status=201)
         if password_form.is_valid():
-            # TODO: Use ENV variable to store PASSWORD
-            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
+            if make_password(password_form.cleaned_data["key"]) == make_password(os.environ["PASSWORD"]):
                 valid = 1
             else:
                 return JsonResponse({'message': 'Incorrect Password'}, status=401)
@@ -261,11 +255,9 @@ def update_project(request, project_id):
             pos_link = project_form.cleaned_data["Poster_link"]
             Projects.objects.filter(pk=project_id).update(sig_id=SIG.objects.get(pk=sig), name=name, description=des,
                                                           report_link=rep_link, poster_link=pos_link)
-            # TODO: Check if redirect should be there (or) render a successful message
             return JsonResponse({'message': 'Project successfully updated'})
         if password_form.is_valid():
-            # TODO: Use ENV variable to store PASSWORD
-            if make_password(password_form.cleaned_data["key"]) == make_password("PASSWORD"):
+            if make_password(password_form.cleaned_data["key"]) == make_password(os.environ["PASSWORD"]):
                 valid = 1
             else:
                 return JsonResponse({'message': 'Incorrect Password'}, status=401)
