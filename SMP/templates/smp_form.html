@@ -33,8 +33,6 @@
 {% endblock %}
 {% block content %}
 	<br><br><br><br><br>
-	<!-- If password validation is done, show the SMP form-->
-	{% if validated %}
 	<form action="" method="POST" id="main_content">
 		{% csrf_token %}
 
@@ -47,8 +45,8 @@
 		{% for f in smp_form %}
 			{% if f.name in static_fields %}
 			<div class="container center_div">
-				<div class="form-group row" align="center"> 
-					<label for="{{f.name}}">{{f.name}}</label>	
+				<div class="form-group row" align="center">
+					<label for="{{f.name}}">{{f.name}}</label>
 					<input type="text" class="form-control" name="{{f.name}}" maxlength="{{f.max_length}}" id="{{f.name}}">
 				</div>
 	</div>
@@ -57,16 +55,16 @@
 			{% endif %}
 		{% endfor %}
 
-		{% for field in dynammic_fields %}
-		<div class="container center_div">	
+		{% for field in dynamic_fields %}
+		<div class="container center_div">
 		<h3>{{field}}</h3>
 		</div>
 			{% for f in smp_form %}
 				{% if field in f.name %}
 					{% if f.is_hidden %}
-						<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
+						<div class="form-group" id="{{f.name}}_div" style="display:none;">
 					{% else %}
-						<div class="form-group" id="{{f.name}}_div" > 
+						<div class="form-group" id="{{f.name}}_div" >
 					{% endif %}
 					<div class="container center_div">
 							<label for="{{f.name}}">{{f.label}}</label>
@@ -98,9 +96,9 @@
 						{% concatenate "Week_" i "_Description" as q %}
 						{% if q in f.name %}
 							{% if f.is_hidden %}
-								<div class="form-group" id="{{f.name}}_div" style="display:none;"> 
+								<div class="form-group" id="{{f.name}}_div" style="display:none;">
 							{% else %}
-								<div class="form-group" id="{{f.name}}_div" > 
+								<div class="form-group" id="{{f.name}}_div" >
 							{% endif %}
 							<div class="container center_div">
 									<label for="{{f.name}}">{{f.label}}</label>
@@ -124,14 +122,6 @@
 		<button type="submit">Submit</button>
 		</div>
 	<form>
-	<!-- If password validation is not done, show the password form-->
-	{% else %}
-		<form method="POST" action="">
-			{% csrf_token %}
-			{{password_form}}
-			<button type="submit">Submit</button>
-		</form>
-	{% endif %}
 {% endblock %}
 
 
