@@ -28,7 +28,7 @@ def load_sig_contents(sig_id):
                     .values('id', 'name', 'display_picture', 'duration_in_months', 'mentors',
                             'members', 'introduction', 'method', 'results', 'obstacles',
                             'conclusion', 'future_work', 'references', 'meet_link'))
-    with open('acm/static/acm/json/yantras.json') as f:
+    with open('staticfiles/acm/json/yantras.json') as f:
         data2 = json.loads(f.read())
         data = ''
         for i in range(len(sigo)):

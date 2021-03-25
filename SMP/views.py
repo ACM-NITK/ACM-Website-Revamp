@@ -13,7 +13,7 @@ def home(request, sig_id):
     smps = list(SMP
                 .objects
                 .filter(sig_id=sig_id).values('id', 'sig_id', 'name', 'mentors', 'overview', 'platform_of_tutoring'))
-    with open('acm/static/acm/json/smp.json') as f:
+    with open('staticfiles/acm/json/smp.json') as f:
         data2 = json.loads(f.read())
         data = ''
         for i in range(5):

@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'acm.my_middleware.CustomCorsMiddleware'
 ]
 
 ROOT_URLCONF = 'ACM_Website.urls'
