@@ -17,12 +17,29 @@
     <div class="container pt-5">
         <div class="section_title text-center">
             <h2>Projects</h2>
-            <h3>
+            <br>
+            <a href="/expo/{{sig.id}}/2019">
+                {% if '/2020' not in request.get_full_path %}
+                <button type="button" class="btn btn-lg btn-primary">2019-2020</button>
+                {% else %}
+                <button type="button" class="btn btn-lg btn-primary disabled">2019-2020</button>
+                {% endif %}
+            </a>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/expo/{{sig.id}}/2020">
+                {% if '/2020' in request.get_full_path %}
+                <button type="button" class="btn btn-lg btn-primary">2020-2021</button>
+                {% else %}
+                <button type="button" class="btn btn-lg btn-primary disabled">2020-2021</button>
+                {% endif %}
+            </a>
+            <br><br>
+            <!-- <h3>
                 Here is the list of projects that we completed in the year 2019-2020
-            </h3>
+            </h3> -->
         </div>
     </div>
-    <br /><br />
+    <!-- <br /><br /> -->
 </section>
 
 <section class="container">

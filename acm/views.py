@@ -43,13 +43,17 @@ def expo_index(request):
     context = {'sigo': SIG.objects.all()}
     return render(request, 'acm/expo_index.html', context)
 
-def expo(request, sig_id):
+def expo_year_wise(request, sig_id, year):
     sig, _, projects, sigo, data = load_sig_contents(sig_id)
+    projects = projects.filter(year=year)
     context = {'projects': projects,
                'sigo': sigo,
                 'sig': sig}
 
     return render(request, 'acm/expo.html', context)
+
+def expo(request, sig_id):
+    return expo_year_wise(request, sig_id, 2019)
 
 def project(request, project_id):
     context = {'project': Projects.objects.get(id=project_id),

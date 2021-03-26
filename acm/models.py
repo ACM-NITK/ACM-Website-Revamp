@@ -39,6 +39,7 @@ class Projects(models.Model):
  future_work = models.TextField(blank=True)
  references = models.TextField(blank=True)
  meet_link = models.CharField(max_length=500, blank=True)
+ year = models.IntegerField()
 
  def __str__(self):
         return self.name
