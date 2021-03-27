@@ -38,6 +38,7 @@ class Projects(models.Model):
  conclusion = models.TextField(blank=True)
  future_work = models.TextField(blank=True)
  references = models.TextField(blank=True)
+ knowledge = models.TextField(blank=True)
  meet_link = models.CharField(max_length=500, blank=True)
  year = models.IntegerField()
 
@@ -53,6 +54,7 @@ class Proposals(models.Model):
     introduction = models.TextField(blank=True)
     method = models.TextField(blank=True)
     existing_work = models.TextField(blank=True)
+
     application = models.TextField(blank=True)
     references = models.TextField(blank=True)
     def __str__(self):
