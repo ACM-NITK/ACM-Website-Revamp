@@ -1,66 +1,76 @@
+{% extends 'acm/base.html' %} {% load static %} {% block content %} {% load extras %}
 
-<!DOCTYPE html>
-{% load extras %}
-<html>
-<head>
-	<title>SMP 2019 | ACM NITK</title>
-</head>
-<body bgcolor="#313454">
-	<center><h1>{{ smp.name }}</h1>
-	<hr width="70%">
-	<br></center>
-	<p class="mentor">Mentor(s) : {{ smp.mentors }}</p>
-	<h1>Overview</h1>
-	<p>{{ smp.overview }}</p>
-	<h1>Platform for Tutoring</h1>
-	<p>{{ smp.platform_of_tutoring }}</p>
-	{% for x in smp_des %}
-	{% if forloop.first %}
-	<h1>{{ smp_des.0.sub_heading }}</h1>
-	<ul>
-		<li>{{ smp_des.0.sub_des }}</li>
-	{% elif smp_des|compare:forloop.counter0 %}
-	    <li>{{ x.sub_des }}</li>
-	{% elif x.sub_heading == "Week 1" %}
-	</ul>
-	<h1>Course Plan</h1>
-	<h1>{{ x.sub_heading }}</h1>
-	<ul>
-		<li>{{ x.sub_des }}</li>
-	{% else %}
-	</ul>
-	<h1>{{ x.sub_heading }}</h1>
-	<ul>
-		<li>{{ x.sub_des }}</li>
-	{% endif %}
-    {% endfor %}
-</ul>
-</body>
-<style type="text/css">
-	h1 {
-	font-size: 30px;
-	color: white;
-	margin-left: 4%;
-}
-h2 {
-	margin-left: 5%;
-	color: white;
-}
-ul {
-	margin-left: 2%;
-	color: white;
-}
-li {
-	margin: 2%;
-}
-p {
-    margin-left: 4%;
-	color: white;
-}
-p.mentor{
-     margin-left: 4%;
-	color: white;
-	font-weight:bold;
-}
-</style>
-</html>
+	<section class="banner_area d-flex text-center">
+		<div class="container align-self-center">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="banner_content">
+						<h2>
+							{{ smp.name }}
+						</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================banner Area =================-->
+
+	<section class="container">
+		<div class="row my-5">
+			<div class="col-12">
+
+
+				<!-- mentors -->
+				{% if smp.mentors %}
+					<h3>
+						MENTORS :
+					</h3>
+					{{ smp.mentors|linebreaks }}
+				{% endif %}
+
+				{% if smp.overview %}
+					<h3>
+						OVERVIEW :
+					</h3>
+					<p>{{ smp.overview|linebreaks }}</p>
+				{% endif %}
+
+				<!-- Platform of tutoring -->
+				{% if smp.platform_of_tutoring %}
+					<h3>PLATFORM FOR TUTORING :</h3>
+					{{ smp.platform_of_tutoring|linebreaks }}
+				{% endif %}
+
+				<!--Details-->
+				{% for x in smp_des %}
+				{% if forloop.first %}
+
+				<!--Exercise-->
+				<h3 style="text-transform: uppercase;">{{ smp_des.0.sub_heading }}</h3>
+				<ul>
+					<li>{{ smp_des.0.sub_des }}</li>
+
+				<!--From second bullet points-->
+				{% elif smp_des|compare:forloop.counter0 %}
+					<li>{{ x.sub_des }}</li>
+
+				<!-- For Week1 only -->
+				{% elif x.sub_heading == "Week 1" %}
+				</ul>
+				<h3>COURSE PLAN</h3>
+				<h3 style="text-transform: uppercase;">{{ x.sub_heading }}</h3>
+				<ul>
+					<li>{{ x.sub_des }}</li>
+
+				<!--For all other weeks and prerequisite-->
+				{% else %}
+				</ul>
+				<h3 style="text-transform: uppercase;">{{ x.sub_heading }}</h3>
+				<ul>
+					<li>{{ x.sub_des }}</li>
+				{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}
