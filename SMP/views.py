@@ -8,6 +8,13 @@ from django.shortcuts import redirect
 from django.contrib import messages
 
 
+form_links = ["https://forms.gle/D5nX9xEC716RNcey9", "https://forms.gle/j2sXQGktrSXZMoee8", "https://forms.gle/PRFU1w8FvK3bsH9YA", "https://forms.gle/DLQca6S7UM2qqh7j6", "https://forms.gle/ipCJj8NEUfMdmzGs7"]
+
+def index(request) :
+    context = {'sigo': SIG.objects.all()}
+    return render(request, 'smp_index.html', context)
+
+
 def home(request, sig_id):
     si = SIG.objects.filter(pk=sig_id)
     sig = si[0]
@@ -19,7 +26,7 @@ def home(request, sig_id):
     for i in range(5):
         if(int(data2[i]['id']) == sig_id):
             data = data2[i]
-    contex = {'sig': sig, 'sigo': sigo, 'smps': smps,'data':data}
+    contex = {'sig': sig, 'sigo': sigo, 'smps': smps,'data':data, 'link':form_links[sig_id-1]}
     return render(request, 'spms.html', contex)
 
 
