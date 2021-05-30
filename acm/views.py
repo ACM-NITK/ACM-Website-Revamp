@@ -53,7 +53,7 @@ def expo_year_wise(request, sig_id, year):
     return render(request, 'acm/expo.html', context)
 
 def expo(request, sig_id):
-    return expo_year_wise(request, sig_id, 2019)
+    return expo_year_wise(request, sig_id, 2020)
 
 def project(request, project_id):
     context = {'project': Projects.objects.get(id=project_id),
