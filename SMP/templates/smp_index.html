@@ -1,0 +1,41 @@
+{% extends 'acm/base.html' %} {% load static %} {% load is__sig %} {% block head_content %}
+<link rel="stylesheet" href="{% static 'acm/css/yantras.css' %}" />
+{% endblock %} {% block content %}
+
+<section class="banner_area d-flex text-center">
+    <div class="container align-self-center">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="banner_content text-center">
+                    <h1> Summer Mentorship Program </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container" style="margin-top: 1%;">
+    <div class="row mb-5">
+        {% for sig in sigo %}
+        {% if sig.id %}
+        <div class="col-lg-4 col-sm-6 col-12">
+            <div class="card-deck">
+                <a href="{{sig.id}}" class="text-dark">
+                    <div class="card mb-4 hvr-glow">
+                        <div style="text-align:center">
+                            <img src="/media/{{sig.image}}" class="card-img-top" alt="..."
+                                style="width: 80%;height:300px;" />
+                            <div class="card-body">
+                                <h5 class="card-title">{{ sig.name }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

@@ -10,6 +10,7 @@ urlpatterns = [
     path('<int:sig_id>/manage',manage),
     path('project/<int:project_id>', project),
     path('expo/<int:sig_id>', expo),
+    path('expo/<int:sig_id>/<int:year>',expo_year_wise),
     path('expo', expo_index),
     path('proposal', proposal_index),
     path('all_proposals/<int:sig_id>', all_proposals),

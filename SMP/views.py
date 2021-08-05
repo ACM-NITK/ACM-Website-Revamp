@@ -7,7 +7,15 @@ import json
 from .forms import *
 
 
+form_links = ["https://forms.gle/D5nX9xEC716RNcey9", "https://forms.gle/j2sXQGktrSXZMoee8", "https://forms.gle/PRFU1w8FvK3bsH9YA", "https://forms.gle/DLQca6S7UM2qqh7j6", "https://forms.gle/ipCJj8NEUfMdmzGs7", "https://forms.gle/gQZkVYJrFiaDDiKm7"]
+
+def index(request) :
+    context = {'sigo': SIG.objects.all()}
+    return render(request, 'smp_index.html', context)
+
+
 def home(request, sig_id):
+<<<<<<< HEAD
     sig = SIG.objects.filter(pk=sig_id).values('id', 'name', 'image', 'mission_statement', 'vision_statement')[0]
     sigo = all_sigs()
     smps = list(SMP
@@ -21,6 +29,20 @@ def home(request, sig_id):
                 data = data2[i]
     context = {'sig': sig, 'sigo': sigo, 'smps': smps, 'data': data}
     return JsonResponse(context)
+=======
+    si = SIG.objects.filter(pk=sig_id)
+    sig = si[0]
+    sigo = SIG.objects.all()
+    smps = SMP.objects.filter(sig_id=sig_id)
+    data2= open('staticfiles/acm/json/smp.json',encoding='utf-8').read()
+    data2= json.loads(data2)
+    data = ''
+    for i in range(6):
+        if(int(data2[i]['id']) == sig_id):
+            data = data2[i]
+    contex = {'sig': sig, 'sigo': sigo, 'smps': smps,'data':data, 'link':form_links[sig_id-1]}
+    return render(request, 'spms.html', contex)
+>>>>>>> 352cab157bc24f87426241034b9879e296561796
 
 
 def des(request, sig_id, smp_id):

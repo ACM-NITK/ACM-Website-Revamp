@@ -49,14 +49,18 @@ def expo_index(request):
     return JsonResponse(context)
 
 
-def expo(request, sig_id):
+def expo_year_wise(request, sig_id, year):
     sig, _, projects, sigo, data = load_sig_contents(sig_id)
+    projects = projects.filter(year=year)
     context = {'projects': projects,
                'sigo': sigo,
                'sig': sig}
 
     return JsonResponse(context)
 
+
+def expo(request, sig_id):
+    return expo_year_wise(request, sig_id, 2020)
 
 def project(request, project_id):
     context = {'project': Projects.objects.filter(id=project_id)

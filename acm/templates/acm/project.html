@@ -61,6 +61,10 @@
             <h3>FUTURE WORK</h3>
             {{ project.future_work|linebreaks }}
             {% endif %}
+            {% if project.knowledge %}
+            <h3>KNOWLEDGE</h3>
+            {{ project.knowledge|linebreaks }}
+            {% endif %}
             {% if project.references %}
             <h3>REFERENCES</h3>
             <p>
