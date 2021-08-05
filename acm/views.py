@@ -62,11 +62,12 @@ def expo_year_wise(request, sig_id, year):
 def expo(request, sig_id):
     return expo_year_wise(request, sig_id, 2020)
 
+
 def project(request, project_id):
     context = {'project': Projects.objects.filter(id=project_id)
-                                  .values('id', 'name', 'display_picture', 'duration_in_months', 'mentors',
-                                          'members', 'introduction', 'method', 'results', 'obstacles',
-                                          'conclusion', 'future_work', 'references', 'meet_link')[0],
+        .values('id', 'name', 'display_picture', 'duration_in_months', 'mentors',
+                'members', 'introduction', 'method', 'results', 'obstacles',
+                'conclusion', 'future_work', 'references', 'meet_link')[0],
                'sigo': all_sigs(),
                'pictures': list(ProjectPictures.objects.filter(project_id=project_id)
                                 .values('id', 'project_id', 'picture', 'title'))}
@@ -92,8 +93,8 @@ def all_proposals(request, sig_id):
 
 def proposal(request, proposal_id):
     context = {'project': Proposals.objects.filter(id=proposal_id)
-                                   .values('id', 'sig_id', 'name', 'duration_in_months', 'mentors', 'members',
-                                           'introduction', 'method', 'existing_work', 'application', 'references')[0],
+        .values('id', 'sig_id', 'name', 'duration_in_months', 'mentors', 'members',
+                'introduction', 'method', 'existing_work', 'application', 'references')[0],
                'sigo': all_sigs()}
 
     return JsonResponse(context)
@@ -273,6 +274,11 @@ def update_project(request, project_id):
         'valid': valid,
         's': s,
     }
+    return JsonResponse(context)
+
+
+def club_events(request):
+    context = {'events': list(Events.objects.filter(sig_id=None).values('id', 'name', 'description', 'image'))}
     return JsonResponse(context)
 
 

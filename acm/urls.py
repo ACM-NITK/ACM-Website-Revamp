@@ -20,4 +20,5 @@ urlpatterns = [
     path('events/update/<int:event_id>/',update_event),
     path('projects/update/<int:project_id>/',update_project),
     path('<str:type>/delete/<int:id>/',delete_component),
+    path('events/club_events', club_events)
 ]

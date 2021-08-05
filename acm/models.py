@@ -15,9 +15,11 @@ class SIG(models.Model):
 
 
 class Events(models.Model):
- sig_id = models.ForeignKey(SIG, on_delete=models.CASCADE)
+ sig_id = models.ForeignKey(SIG, on_delete=models.CASCADE, null=True)
  name = models.CharField(max_length=200)
  description = models.CharField(max_length=5000)
+ image = models.ImageField(upload_to='uploads/events', blank=True, null=True, validators=[
+     FileExtensionValidator(['jpg', 'jpeg', 'png', ])])
 
  def __str__(self):
         return self.name
