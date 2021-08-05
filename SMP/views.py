@@ -15,7 +15,6 @@ def index(request) :
 
 
 def home(request, sig_id):
-<<<<<<< HEAD
     sig = SIG.objects.filter(pk=sig_id).values('id', 'name', 'image', 'mission_statement', 'vision_statement')[0]
     sigo = all_sigs()
     smps = list(SMP
@@ -29,20 +28,6 @@ def home(request, sig_id):
                 data = data2[i]
     context = {'sig': sig, 'sigo': sigo, 'smps': smps, 'data': data}
     return JsonResponse(context)
-=======
-    si = SIG.objects.filter(pk=sig_id)
-    sig = si[0]
-    sigo = SIG.objects.all()
-    smps = SMP.objects.filter(sig_id=sig_id)
-    data2= open('staticfiles/acm/json/smp.json',encoding='utf-8').read()
-    data2= json.loads(data2)
-    data = ''
-    for i in range(6):
-        if(int(data2[i]['id']) == sig_id):
-            data = data2[i]
-    contex = {'sig': sig, 'sigo': sigo, 'smps': smps,'data':data, 'link':form_links[sig_id-1]}
-    return render(request, 'spms.html', contex)
->>>>>>> 352cab157bc24f87426241034b9879e296561796
 
 
 def des(request, sig_id, smp_id):

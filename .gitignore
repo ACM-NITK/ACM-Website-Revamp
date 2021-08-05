@@ -5,9 +5,6 @@ __pycache__/
 .vscode/
 venv/
 *.pyc
-<<<<<<< HEAD
 .idea
-=======
 db.sqlite3
 stderr.log
->>>>>>> 352cab157bc24f87426241034b9879e296561796
