@@ -10,7 +10,7 @@ from .forms import *
 
 
 def home_page(request):
-    events = list(Events.objects.all().values('id', 'sig_id', 'name', 'description'))
+    events = list(Events.objects.all().values('id', 'sig_id', 'name', 'description', 'image'))
     special_people = list(
         Special_people.objects.all().values('id', 'name', 'post', 'email_link', 'linkedin_link', 'image_path'))
 
@@ -23,7 +23,7 @@ def home_page(request):
 def load_sig_contents(sig_id):
     sig = SIG.objects.filter(pk=sig_id).values('id', 'name', 'image', 'mission_statement', 'vision_statement')[0]
     sigo = all_sigs()
-    events = list(Events.objects.filter(sig_id=sig_id).values('id', 'sig_id', 'name', 'description'))
+    events = list(Events.objects.filter(sig_id=sig_id).values('id', 'sig_id', 'name', 'description', 'image'))
     projects = list(Projects.objects.filter(sig_id=sig_id)
                     .values('id', 'name', 'display_picture', 'duration_in_months', 'mentors',
                             'members', 'introduction', 'method', 'results', 'obstacles',
