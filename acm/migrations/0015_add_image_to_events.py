@@ -14,7 +14,7 @@ class Migration(migrations.Migration):
             model_name='Events',
             name='image',
             field=models.ImageField(upload_to='uploads/events', blank=True, null=True, validators=[
-                FileExtensionValidator(['jpg', 'jpeg', 'png', ])]),
+                FileExtensionValidator(['jpg', 'jpeg', 'png'])]),
         ),
         migrations.AlterField(
             model_name='Events',

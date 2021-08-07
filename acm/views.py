@@ -12,7 +12,7 @@ from .forms import *
 def home_page(request):
     events = list(Events.objects.all().values('id', 'sig_id', 'name', 'description'))
     special_people = list(
-        Special_people.objects.all().values('id', 'name', 'post', 'fb_link', 'linkedin_link', 'image_path'))
+        Special_people.objects.all().values('id', 'name', 'post', 'email_link', 'linkedin_link', 'image_path'))
 
     # opens the json file and saves the raw contents
     sigo = all_sigs()
@@ -81,21 +81,26 @@ def proposal_index(request):
 
 def all_proposals(request, sig_id):
     context = {'projects': list(Proposals.objects.filter(sig_id=sig_id)
-                                .values('id', 'sig_id', 'name', 'duration_in_months', 'mentors', 'members',
-                                        'introduction', 'method', 'existing_work', 'application', 'references')),
+                                .values('id', 'sig_id', 'name', 'duration_in_months', 'mentors', 'introduction',
+                                        'method', 'existing_work', 'application', 'references', 'learning_outcomes',
+                                        'results', 'image')),
                'sigo': all_sigs(),
                'sig':
                    SIG.objects.filter(id=sig_id).values('id', 'name', 'image', 'mission_statement', 'vision_statement')[
-                       0]}
+                       0]
+               }
 
     return JsonResponse(context)
 
 
 def proposal(request, proposal_id):
     context = {'project': Proposals.objects.filter(id=proposal_id)
-        .values('id', 'sig_id', 'name', 'duration_in_months', 'mentors', 'members',
-                'introduction', 'method', 'existing_work', 'application', 'references')[0],
-               'sigo': all_sigs()}
+        .values('id', 'sig_id', 'name', 'duration_in_months', 'mentors', 'introduction',
+                'method', 'existing_work', 'application', 'references', 'learning_outcomes', 'results', 'image')[0],
+               'sigo': all_sigs(),
+               'timelines': list(ProposalTimeline.objects.filter(proposal_id=proposal_id)
+                                 .values('id', 'proposal_id', 'phase', 'tasks', 'start_date', 'end_date'))
+               }
 
     return JsonResponse(context)
 
