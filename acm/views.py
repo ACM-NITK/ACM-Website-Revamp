@@ -27,7 +27,7 @@ def load_sig_contents(sig_id):
     projects = list(Projects.objects.filter(sig_id=sig_id)
                     .values('id', 'name', 'display_picture', 'duration_in_months', 'mentors',
                             'members', 'introduction', 'method', 'results', 'obstacles',
-                            'conclusion', 'future_work', 'references', 'meet_link'))
+                            'conclusion', 'future_work', 'references', 'meet_link', 'year'))
     with open('staticfiles/acm/json/yantras.json') as f:
         data2 = json.loads(f.read())
         data = ''
@@ -51,7 +51,7 @@ def expo_index(request):
 
 def expo_year_wise(request, sig_id, year):
     sig, _, projects, sigo, data = load_sig_contents(sig_id)
-    projects = projects.filter(year=year)
+    projects = list(filter(lambda x: x['year'] == year, projects))
     context = {'projects': projects,
                'sigo': sigo,
                'sig': sig}
